@@ -1,9 +1,10 @@
-<a href={{route('posts.show')}} class="flex flex-col hover:scale-105 shadow p-2 w-[300px]
-    gap-2">
+@foreach ($posts as $post)
+
+
+<a href={{route('posts.show',$post)}} class="flex flex-col hover:scale-105 shadow p-2 w-[300px]
+gap-2">
     <div>
-        <h1 class="font-bold text-[16px]">Quibdó termina el año con resultados contundentes contra
-            el
-            homicidio
+        <h1 class="font-bold text-[16px]"> {{$post->name}}
         </h1>
     </div>
     <div>
@@ -30,3 +31,4 @@
 
 
 </a>
+@endforeach

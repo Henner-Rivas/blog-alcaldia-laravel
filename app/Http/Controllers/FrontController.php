@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+
+use App\Models\Post;
+use App\Models\Tag;
 use Faker\Provider\Lorem;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -10,47 +14,12 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $post = [
 
-            "id" => 1,
-            "name" => "Quibdó termina el año con resultados contundentes contra
-            el
-            homicidio",
-            "slug" => "quidbo-termiina-el-año-con-resultados",
-            "extract" => "Quibdó termina el año con resultados cont Quibdó termina el año con resQuibdó termina el año con resultados contQuibdó termina el año con resultados contultados cont",
-            "image" => "https://picsum.photos/200/200",
-            "body" => "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            <br>
-            <br>
-
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-    "
-        ];
+        $posts = Post::where('status', 2)->latest()->get();
 
 
 
-
-        return view('pages.home', ['post' => $post]);
+        return view('pages.home', ['posts' => $posts]);
     }
     public function tramites()
     {
@@ -64,42 +33,38 @@ class FrontController extends Controller
     {
         return view('pages.sala-prensa');
     }
-    public function articulo()
+    public function show_articulo(Post $post)
     {
-        $post = [
-            "id" => 1,
-            "name" => "Quibdó termina el año con resultados contundentes contrael
-            homicidio",
-            "slug" => "quidbo-termiina-el-año-con-resultados",
-            "extract" => "Quibdó termina el año con resultados cont Quibdó termina el año con resQuibdó termina el año con resultados contQuibdó termina el año con resultados contultados cont",
-            "image" => "https://picsum.photos/200/200",
-            "body" => "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            <br>
-            <br>
 
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam velit ipsa porro ipsam quia et
-            numquam
-            ea praesentium. Pariatur atque soluta nihil illum blanditiis facilis eaque? Accusantium, dolorem!
-            Iure.
-    "
-        ];
-        return view('posts.show', ['post' => $post]);
+        $similares = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->take(5)->get();
+
+        return view('posts.show', ['post' => $post, 'similares' => $similares]);
+    }
+
+    public function category(Category $category)
+    {
+
+
+        $posts = Post::where('status', 2)->where('category_id', $category->id)->latest('id')->paginate(6);
+
+        return view('posts.categories', ['posts' => $posts, 'category' => $category]);
+    }
+
+    public function tag(Tag $tag)
+    {
+
+
+        $posts = $tag->posts()->where('status', 2)->latest('id')->paginate(6);
+
+        return view('posts.tags', ['posts' => $posts, 'tag' => $tag]);
+
+        return $tag;
+    }
+
+    public function slider()
+    {
+        $posts = Post::where('status', 2)->latest()->get();
+
+        return view('components.slider-home', ['post' => $posts]);
     }
 }

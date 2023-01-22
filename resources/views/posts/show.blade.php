@@ -4,16 +4,11 @@
 
         <div class=" max-w-7xl">
 
-            <h1 class="text-4xl font-semibold text-opacity-20"> Quibdó termina el año con
-                resultados contundentes contra termina</h1>
+            <h1 class="text-4xl font-semibold text-opacity-20"> {{$post->name}}dd</h1>
 
 
             <div class="text-lg text-gray-500">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus fugit autem a alias ad qui dolores
-                quis
-                laboriosam, perferendis suscipit veritatis! Aperiam magni fuga blanditiis delectus eos inventore
-                adipisci
-                repellat!
+                {{$post->extract}}
             </div>
         </div>
         <div class="grid grid-cols-3 gap-6 my-8 ">
@@ -24,25 +19,13 @@
                     src="https://www.wradio.com.co/resizer/kzjQ_Rdxlv-4I0sVQarXw9uYDoM=/650x488/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/ZFF6URDHXBHB5F2N2I7T3JMJJQ.jpeg">
                 <div class="text-base text-gray-700">
 
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis sequi consectetur doloribus, dolorum
-                    expedita reiciendis cumque deserunt minus repellendus deleniti, id nesciunt aut impedit animi labore
-                    optio dolor exercitationem. Unde.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio exercitationem atque distinctio
-                    iusto earum magnam architecto deleniti qui ipsum incidunt sit tempore possimus provident, omnis eum.
-                    Maiores, sed! Repudiandae, at?
-                    <br><br>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. In unde repellat beatae. Autem sed
-                    suscipit ex vero, voluptas libero. Expedita dolorem ab dignissimos, veniam voluptatibus dolorum enim
-                    rem facilis doloribus.
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore quae nisi quis, animi aspernatur
-                    ea recusandae doloremque consectetur illum excepturi quibusdam tempora aliquid corporis omnis unde
-                    eligendi eos dolorem maxime.
+                    {{$post->body}}
                 </div>
 
             </div>
 
             <div class="col-span-3  md:md:col-span-1">
-                <h3>Articulos relacionados</h3>
+                <h3>Articulos relacionados con deporte</h3>
 
                 <div class="flex gap-5 flex-col">
                     <div class="

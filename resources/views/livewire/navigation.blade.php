@@ -89,8 +89,9 @@
             <div class="text-white flex gap-2 items-center">
                 <img src="{{ Vite::asset('resources/images/escudo.jpg') }} " class=" w-[30px] rounded-[50%]">
                 <div class="flex flex-col">
-                    <strong class="text-sm">Alcaldia de Quibdó</strong>
-                    <span class="text-[12px]">Secretaria y depedencias</span>
+                    <strong class="text-sm">Secreataria ambiente</strong>
+                    {{-- <span class="text-[12px]">Secretaria y depedencias</span>
+                    --}}
                 </div>
 
             </div>
@@ -196,8 +197,7 @@
                     <li x-data="{openDesple:false}" class="relative">
                         <div x-on:click="openDesple=true"
                             class=" py-2 pl-3 pr-4 flex cursor-pointer items-center hover:font-medium  text-gray-700 rounded  md:hover:bg-transparent hover:text-my_red md:p-0  ">
-                            Servicos
-                            a la ciudadania
+                            Categorias
 
                             <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -209,21 +209,16 @@
                         <div x-show="openDesple" x-on:click.away="openDesple=false"
                             class="z-40  font-normal bg-white divide-y absolute divide-gray-100 rounded shadow w-44 ">
                             <ul class="py-1 text-sm text-gray-700">
+
+                                @foreach ($categories as $category)
                                 <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">Service
+                                    <a href={{ route('posts.category', $category) }}
+                                        class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">{{$category->name}}
                                         1</a>
                                 </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">service
-                                        2</a>
-                                </li>
-                                <li>
-                                    <a href=" #"
-                                        class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">service
-                                        3</a>
-                                </li>
+
+                                @endforeach
+
                             </ul>
                         </div>
                     </li>

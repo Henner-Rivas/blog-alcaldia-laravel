@@ -44,8 +44,11 @@
 
 @endpush
 
+
+
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
+        @foreach ($posts as $post)
 
         <div class="swiper-slide  flex flex-col md:flex-row  h-[70vh] md:h-[55vh]">
             <div
@@ -61,7 +64,7 @@
                     <p class="text-start">Contenido relacionado a: </p> <span class="">innovación</span>
                 </div>
 
-                <a href="{{route('posts.show')}}"
+                <a href="{{route('posts.show',$post)}}"
                     class="py-2 px-3 mb-6 w-full md:w-[200px] text-xs bg-white text-black rounded-lg">
                     CONOCE MAS
                 </a>
@@ -84,7 +87,7 @@
                     <p class="text-start">Contenido relacionado a: </p> <span class="">innovación</span>
                 </div>
 
-                <a href="{{route('posts.show')}}"
+                <a href="{{route('posts.show',$post)}}"
                     class="py-2 px-3 mb-6 w-full md:w-[200px] text-xs bg-white text-black rounded-lg">
                     CONOCE MAS
                 </a>
@@ -107,7 +110,7 @@
                     <p class="text-start">Contenido relacionado a: </p> <span class="">innovación</span>
                 </div>
 
-                <a href="{{route('posts.show')}}"
+                <a href="{{route('posts.show',$post)}}"
                     class="py-2 px-3 mb-6 w-full md:w-[200px] text-xs bg-white text-black rounded-lg">
                     CONOCE MAS
                 </a>
@@ -130,7 +133,7 @@
                     <p class="text-start">Contenido relacionado a: </p> <span class="">innovación</span>
                 </div>
 
-                <a href="{{route('posts.show')}}"
+                <a href="{{route('posts.show',$post)}}"
                     class="py-2 px-3 mb-6 w-full md:w-[200px] text-xs bg-white text-black rounded-lg">
                     CONOCE MAS
                 </a>
@@ -138,7 +141,10 @@
             <div class="w-full md:w-[60%] image">
                 <img src="{{ Vite::asset('resources/images/quibdo.jpg') }}" alt="quindo">
             </div>
+
+
         </div>
+        @endforeach
 
     </div>
     <div class="swiper-button-next"></div>

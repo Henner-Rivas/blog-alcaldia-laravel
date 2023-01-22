@@ -7,7 +7,7 @@
 
             <h2 class=" font-extrabold  text-center text-3xl py-4">NOTICIAS DE LA SEMANA</h2>
             <div class="flex gap-3 py-5 flex-wrap justify-center my-0 mx-auto">
-                <a href={{route('posts.show')}} class="w-[400px] flex md:w-[500px]">
+                <a href="" class="w-[400px] flex md:w-[500px]">
                     <div class="relative w-[220px] ">
                         <img src="https://cdn.britannica.com/35/238335-050-2CB2EB8A/Lionel-Messi-Argentina-Netherlands-World-Cup-Qatar-2022.jpg"
                             alt="Messi" class="w-full">
@@ -23,7 +23,7 @@
                             argentino que genero miles de reacciones</p>
                     </div>
                 </a>
-                <a href={{route('posts.show')}} class="w-[400px] flex md:w-[500px]">
+                <a href="" class="w-[400px] flex md:w-[500px]">
                     <div class="relative w-[220px] ">
                         <img src="https://cdn.britannica.com/35/238335-050-2CB2EB8A/Lionel-Messi-Argentina-Netherlands-World-Cup-Qatar-2022.jpg"
                             alt="Messi" class="w-full">
@@ -39,7 +39,7 @@
                             argentino que genero miles de reacciones</p>
                     </div>
                 </a>
-                <a href={{route('posts.show')}} class="w-[400px] flex md:w-[500px]">
+                <a href="" class="w-[400px] flex md:w-[500px]">
                     <div class="relative w-[220px] ">
                         <img src="https://cdn.britannica.com/35/238335-050-2CB2EB8A/Lionel-Messi-Argentina-Netherlands-World-Cup-Qatar-2022.jpg"
                             alt="Messi" class="w-full">
@@ -56,7 +56,7 @@
                     </div>
 
                 </a>
-                <a href={{route('posts.show')}} class="w-[400px] flex md:w-[500px]">
+                <a href="" class="w-[400px] flex md:w-[500px]">
                     <div class="relative w-[220px] ">
                         <img src="https://cdn.britannica.com/35/238335-050-2CB2EB8A/Lionel-Messi-Argentina-Netherlands-World-Cup-Qatar-2022.jpg"
                             alt="Messi" class="w-full">

@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(FrontController::class)->group(function () {
     Route::get('/', 'index')->name('pages.index');
+    Route::get('/posts/{post}', 'show_articulo')->name('posts.show');
+    Route::get('/categories/{category}', 'category')->name('posts.category');
+    Route::get('/etiquetas/{tag}', 'tag')->name('posts.tag');
+
     Route::get('/tramites-y-servicios', 'tramites')->name('pages.tramites-y-servicios');
     Route::get('/transparencia', 'transparencia')->name('pages.transparencia');
     Route::get('/sala-prensa', 'prensa')->name('pages.sala-prensa');
-    Route::get('/articulos/quibo-dtermina-el año', 'articulo')->name('posts.show');
 });
 
 
