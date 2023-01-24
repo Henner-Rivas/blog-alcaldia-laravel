@@ -3,7 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Lista users</h1>
+<div class="d-flex justify-content-between">
+
+    <h1>Lista etiquetas</h1>
+    <a class=" btn btn-secondary " href="{{route('admin.tags.create')}}">Crear
+        etiquetas</a>
+
+</div>
 @stop
 
 @section('content')
@@ -14,8 +20,9 @@
 @endif
 <div class="card">
 
+
     <div class="card-header">
-        <form action="{{route('admin.users.index')}}" method="GET" class="d-flex">
+        <form action="{{route('admin.tags.index')}}" method="GET" class="d-flex">
             <input type="text" class="form-control" value="{{request('search')}}" name="search" placeholder="Buscar">
             <button class="btn btn-primary">Buscar</button>
         </form>
@@ -31,20 +38,20 @@
         <tbody>
 
 
-            @foreach ($users as $user)
+            @foreach ($tags as $tag)
             <tr>
-                <th scope="row">{{$user->id}}</th>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
+                <th scope="row">{{$tag->id}}</th>
+                <td>{{$tag->name}}</td>
+                <td>{{$tag->slug}}</td>
 
                 <td width="10px">
-                    <a class="btn btn-primary btn-sm" href={{route('admin.users.edit',$user)}}>
+                    <a class="btn btn-primary btn-sm" href={{route('admin.tags.edit',$tag)}}>
                         Editar
                     </a>
 
                 </td>
                 <td class="btn" width="10px">
-                    <form action="{{route('admin.users.destroy',$user)}}" method="POST">
+                    <form action="{{route('admin.tags.destroy',$tag)}}" method="POST">
                         @csrf
                         @method('delete')
 
@@ -64,7 +71,7 @@
 </div>
 
 <div class="card-footer">
-    {{$users->links()}}
+    {{$tags->links()}}
 </div>
 @stop
 

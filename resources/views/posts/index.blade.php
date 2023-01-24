@@ -8,8 +8,13 @@ gap-2">
         </h1>
     </div>
     <div>
-        <img src="https://www.wradio.com.co/resizer/kzjQ_Rdxlv-4I0sVQarXw9uYDoM=/650x488/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/ZFF6URDHXBHB5F2N2I7T3JMJJQ.jpeg"
-            alt="" class="rounded">
+        <img src="@if($post->image){{Storage::url($post->image->url)}} @else
+         https://www.wradio.com.co/resizer/kzjQ_Rdxlv-4I0sVQarXw9uYDoM=/650x488/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/ZFF6URDHXBHB5F2N2I7T3JMJJQ.jpeg
+         @endif" alt="{{$post->name}}" class="rounded">
+        {{-- <div class="rounded" alt="{{$post->name}}" style=" background-image: url(@if($post->image){{Storage::url($post->image->url)}} @else
+            https://www.wradio.com.co/resizer/kzjQ_Rdxlv-4I0sVQarXw9uYDoM=/650x488/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/ZFF6URDHXBHB5F2N2I7T3JMJJQ.jpeg
+            @endif)">
+        </div> --}}
     </div>
     <div class="flex gap-1 flex-col">
         <p class="py-0 my-0 "> Contenido asociado a:

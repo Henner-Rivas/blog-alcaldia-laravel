@@ -216,9 +216,7 @@
                                         class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">{{$category->name}}
                                         1</a>
                                 </li>
-
                                 @endforeach
-
                             </ul>
                         </div>
                     </li>

@@ -150,8 +150,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -321,10 +321,19 @@ return [
             'text' => 'users',
             'url'  => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
+            'active' => ['admin/users*']
         ],
         [
             'text' => 'categorias',
-            'url'  => 'admin/categorias',
+            'url'  => 'admin/categories',
+            'active' => ['admin/categories*']
+
+        ],
+        [
+            'text' => 'etiquetas',
+            'url'  => 'admin/tags',
+            'active' => ['admin/tags*']
+
         ],
         [
             'text'    => 'multilevel',
@@ -367,14 +376,14 @@ return [
         ['header' => 'Opciones de articulos'],
         [
             'text'       => 'Lista de articulos',
-            'url'        => '#',
+            'url'        => 'admin/posts',
             'icon'        => 'far fa-fw fa-file',
 
         ],
 
         [
             'text'       => 'crear articulo',
-            'url'        => '#',
+            'url'        => 'admin/posts/create',
             'icon'        => 'far fa-fw fa-file',
 
         ],

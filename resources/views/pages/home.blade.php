@@ -86,11 +86,7 @@
 
                 <div class="flex flex-wrap gap-6 items-center justify-center">
                     @include('posts/index')
-                    @include('posts/index')
-                    @include('posts/index')
-                    @include('posts/index')
-                    @include('posts/index')
-                    @include('posts/index')
+
 
                 </div>
 
