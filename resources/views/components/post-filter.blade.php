@@ -2,12 +2,10 @@
 <div>
 
     <article class="shadow bg-white rounded-lg overflow-hidden">
-        {{-- <img src="{{Storage::url($post->image->url)}}" alt="">
-        --}}
         <div>
-            <img class="w-full h-72 object-cover object-center "
-                src="https://a.espncdn.com/media/motion/ESPNi/2023/0118/int_230118_Is_a_Saudi_Arabia_exhibition_a_sad_ending_for_Messi_vs_Ronaldo/int_230118_Is_a_Saudi_Arabia_exhibition_a_sad_ending_for_Messi_vs_Ronaldo.jpg"
-                alt="dd">
+
+            <img src="@if($post->image){{Storage::url($post->image->url)}}
+                @endif" alt="{{$post->name}}" class="rounded h-[15rem] w-full object-cover">
         </div>
 
         <div class="px-6 py-3">

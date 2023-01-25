@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -49,7 +50,21 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
 
+
+        /*         return $request->file('file');
+        */
+
+
         $post = Post::create($request->all());
+
+        if ($request->file('file')) {
+            $url =  Storage::put('public/posts', $request->file('file'));
+
+            $post->image()->create(['url' => $url]);
+        }
+
+
+
 
         if ($request->tags) {
             $post->tags()->attach($request->tags);
@@ -67,7 +82,8 @@ class PostController extends Controller
     {
         //
 
-        return view('admin.posts.show', ['post' => $post]);
+        /*         return view('admin.posts.show', ['post' => $post]);
+ */
     }
 
     /**
@@ -78,7 +94,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', ['post' => $post]);
+        $tags = Tag::all();
+        $categories = Category::pluck('name', 'id');
+
+        return view('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
     }
 
     /**
@@ -88,9 +107,32 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        if ($request->file('file')) {
+            $url =  Storage::put('public/posts', $request->file('file'));
+            if ($post->image) {
+                Storage::delete($post->image->url);
+                $post->image->update([
+                    'url' => $url,
+                ]);
+            } else {
+                $post->image()->create([
+                    'url' => $url
+                ]);
+            }
+        }
+        /*         $this->authorize('author', $post);
+ */
+        $tags = Tag::all();
+        $categories = Category::pluck('name', 'id');
+
+
+        if ($request->tags) {
+            $post->tags()->sync($request->tags);
+        }
+        return redirect()->route('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
     }
 
     /**
@@ -101,6 +143,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+
+        if ($post->image) {
+            Storage::delete($post->image->url);
+        }
+        $post->delete();
+
+
+        return redirect()->route('admin.posts.index')->with('info', 'La articulo se ha eliminado con exito');
     }
 }

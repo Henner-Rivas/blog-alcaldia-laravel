@@ -84,7 +84,7 @@
         <div class="flex flex-col max-w-7xl my-0 mx-auto justify-center items-center">
             <h3 class=" font-extrabold  text-center text-4xl py-4">Ultimos rticulos</h2>
 
-                <div class="flex flex-wrap gap-6 items-center justify-center">
+                <div class="flex flex-wrap gap-6 items-center justify-center ">
                     @include('posts/index')
 
 

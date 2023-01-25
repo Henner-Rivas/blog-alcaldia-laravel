@@ -16,7 +16,7 @@
             {{-- contenido pricipal --}}
             <div class="col-span-3 md:col-span-2 ">
                 <img class="w-full h-[400px] bg-cover bg-center object-cover"
-                    src="https://www.wradio.com.co/resizer/kzjQ_Rdxlv-4I0sVQarXw9uYDoM=/650x488/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/ZFF6URDHXBHB5F2N2I7T3JMJJQ.jpeg">
+                    src="@if($post->image){{Storage::url($post->image->url)}} @endif">
                 <div class="text-base text-gray-700">
 
                     {{$post->body}}

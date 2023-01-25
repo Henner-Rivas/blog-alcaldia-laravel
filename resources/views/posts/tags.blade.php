@@ -2,9 +2,10 @@
 
     <div class="container my-0 mx-auto md:px-8 py-5 max-w-5xl">
 
-        <h1 class="uppercase text center font-bold">Etiqueta :{{$tag->name}}</h1>
+        <h1 class="uppercase text-2xl py-3 text center font-bold">Articulos relacionados con la etiqueta :{{$tag->name}}
+        </h1>
 
-        <div>
+        <div class="gap-5 flex flex-col">
             @foreach ($posts as $post)
 
             <x-post-filter :post="$post" />

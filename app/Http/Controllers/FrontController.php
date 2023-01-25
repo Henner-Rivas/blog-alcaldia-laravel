@@ -38,6 +38,7 @@ class FrontController extends Controller
 
         $similares = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->take(5)->get();
 
+        $this->authorize('published', $post);
         return view('posts.show', ['post' => $post, 'similares' => $similares]);
     }
 

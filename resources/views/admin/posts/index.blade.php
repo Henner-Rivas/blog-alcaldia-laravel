@@ -54,7 +54,7 @@
 
 
                     <td width="10px">
-                        <a class="btn btn-primary btn-sm" href={{route('admin.posts.edit',$post)}}>
+                        <a class="btn btn-primary btn-sm" href="{{route('admin.posts.edit',$post)}}">
                             Editar
                         </a>
 
