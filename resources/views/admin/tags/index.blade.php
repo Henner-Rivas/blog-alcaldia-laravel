@@ -27,6 +27,8 @@
             <button class="btn btn-primary">Buscar</button>
         </form>
     </div>
+    @if ($tags->count() > 0)
+
     <table class="table">
         <thead>
             <tr>
@@ -68,6 +70,13 @@
 
         </tbody>
     </table>
+    @else
+
+    <div class="card-body">
+        <h4>No hay registros</h4>
+    </div>
+
+    @endif
 </div>
 
 <div class="card-footer">

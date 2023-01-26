@@ -5,10 +5,11 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
-    Route::get('/', 'index')->name('admin.index');
+    Route::get('/', 'index')->middleware('can:admin.index')->name('admin.index');
 });
 
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update', 'destroy'])->names('admin.users');
@@ -17,3 +18,4 @@ Route::resource('categories', CategoryController::class)->names('admin.categorie
 Route::resource('tags', TagController::class)->names('admin.tags');
 
 Route::resource('posts', PostController::class)->names('admin.posts');
+Route::resource('roles', RoleController::class)->names('admin.roles');

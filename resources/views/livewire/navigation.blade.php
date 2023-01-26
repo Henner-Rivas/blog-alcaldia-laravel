@@ -6,10 +6,10 @@
             </a>
             <div class="flex gap-2 items-center cursor-pointer relative" x-data=" {openLang:false}">
                 <div x-on:click="openLang=true" class="flex gap-2 items-center">
-                    <i class=" fa-solid fa-globe text-white"></i>
+                    {{-- <i class=" fa-solid fa-globe text-white"></i>
                     <span class="text-white md:flex hidden">Idioma</span>
                     <i class="fa-solid fa-arrow-down text-white md:flex hidden"></i>
-
+                    --}}
                 </div>
 
                 <div x-show="openLang" x-on:click.away="openLang=false"
@@ -46,10 +46,15 @@
                             class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{{auth()->user()->email}}</span>
                     </div>
                     <ul class="py-1">
+
+                        @can('admin.index')
                         <li>
+
                             <a href="{{route('admin.index')}}"
                                 class="block px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-light_red  hover:text-white font-medium">Dashboard</a>
                         </li>
+
+                        @endcan
 
                         <li>
                             <a href="{{route('profile.show')}}"

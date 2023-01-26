@@ -19,21 +19,31 @@ class Rolseeder extends Seeder
         $admin = Role::create(['name' => 'Admin']);
         $role2 = Role::create(['name' => 'blogger']);
 
-        Permission::create(['name' => 'admin.index'])->syncRoles([$admin, $role2]);
+        Permission::create(['name' => 'admin.index', 'description' => 'ver dashboard'])->syncRoles([$admin, $role2]);
 
-        Permission::create(['name' => 'admin.categories.index'])->syncRoles([$admin, $role2]);;
-        Permission::create(['name' => 'admin.categories.create'])->syncRoles([$admin]);;
-        Permission::create(['name' => 'admin.categories.edit'])->syncRoles([$admin]);;
-        Permission::create(['name' => 'admin.categories.destroy'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.categories.index', 'description' => 'ver listado categorias'])->syncRoles([$admin, $role2]);;
+        Permission::create(['name' => 'admin.categories.create', 'description' => 'crear categorias'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.categories.edit', 'description' => 'editar categorias'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.categories.destroy', 'description' => 'eliminar categorias'])->syncRoles([$admin]);;
 
-        Permission::create(['name' => 'admin.posts.index'])->syncRoles([$admin, $role2]);;
-        Permission::create(['name' => 'admin.posts.create'])->syncRoles([$admin]);;
-        Permission::create(['name' => 'admin.posts.edit'])->syncRoles([$admin]);;
-        Permission::create(['name' => 'admin.posts.destroy'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.posts.index', 'description' => 'ver lista de articulos '])->syncRoles([$admin, $role2]);;
+        Permission::create(['name' => 'admin.posts.create', 'description' => 'crear articulos'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.posts.edit', 'description' => 'editar articulos'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.posts.destroy', 'description' => 'eliminar articulos'])->syncRoles([$admin]);;
 
-        Permission::create(['name' => 'admin.tags.index'])->syncRoles([$admin, $role2]);;
-        Permission::create(['name' => 'admin.tags.create'])->syncRoles([$admin]);;
-        Permission::create(['name' => 'admin.tags.edit'])->syncRoles([$admin]);;
-        Permission::create(['name' => 'admin.tags.destroy'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.tags.index', 'description' => 'ver listado de etiquetas'])->syncRoles([$admin, $role2]);;
+        Permission::create(['name' => 'admin.tags.create', 'description' => 'crear etiqueta'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.tags.edit', 'description' => 'editar etiqueta'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.tags.destroy', 'description' => 'eliminar etiqueta'])->syncRoles([$admin]);;
+
+
+        Permission::create(['name' => 'admin.users.index', 'description' => 'ver lista de usuarios'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.users.create', 'description' => 'ver dashboard'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.users.edit', 'description' => 'asignar un rol'])->syncRoles([$admin]);;
+
+        Permission::create(['name' => 'admin.roles.index', 'description' => 'ver listado de roles'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.roles.create', 'description' => 'crear rol'])->syncRoles([$admin]);;
+
+        Permission::create(['name' => 'admin.roles.edit', 'description' => 'editar roles'])->syncRoles([$admin]);;
     }
 }

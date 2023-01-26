@@ -14,6 +14,16 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct()
+    {
+        $this->middleware('can:admin.tags.index')->only('index');
+        $this->middleware('can:admin.tags.edit')->only('edit', 'update');
+        $this->middleware('can:admin.tags.create')->only('create', 'store');
+
+        $this->middleware('can:admin.tags.destroy')->only('destroy');
+    }
     public function index()
     {
         $tags = Tag::latest()->paginate();
@@ -42,6 +52,8 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
 

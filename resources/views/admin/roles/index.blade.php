@@ -3,7 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Lista users</h1>
+<div class="d-flex justify-content-between">
+
+    <h1>Lista roles</h1>
+    <a class=" btn btn-secondary " href="{{route('admin.roles.create')}}">Crear
+        roles</a>
+
+</div>
 @stop
 
 @section('content')
@@ -12,17 +18,16 @@
 <div class="alert alert-success"><strong>{{session('info')}}</strong> </div>
 
 @endif
-
 <div class="card">
 
+
     <div class="card-header">
-        <form action="{{route('admin.users.index')}}" method="GET" class="d-flex">
+        <form action="{{route('admin.roles.index')}}" method="GET" class="d-flex">
             <input type="text" class="form-control" value="{{request('search')}}" name="search" placeholder="Buscar">
             <button class="btn btn-primary">Buscar</button>
         </form>
     </div>
-
-    @if ($users->count() > 0)
+    @if ($roles->count() > 0)
 
     <table class="table">
         <thead>
@@ -35,20 +40,20 @@
         <tbody>
 
 
-            @foreach ($users as $user)
+            @foreach ($roles as $role)
             <tr>
-                <th scope="row">{{$user->id}}</th>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
+                <th scope="row">{{$role->id}}</th>
+                <td>{{$role->name}}</td>
+                <td>{{$role->slug}}</td>
 
                 <td width="10px">
-                    <a class="btn btn-primary btn-sm" href={{route('admin.users.edit',$user)}}>
+                    <a class="btn btn-primary btn-sm" href={{route('admin.roles.edit',$role)}}>
                         Editar
                     </a>
 
                 </td>
                 <td class="btn" width="10px">
-                    <form action="{{route('admin.users.destroy',$user)}}" method="POST">
+                    <form action="{{route('admin.roles.destroy',$role)}}" method="POST">
                         @csrf
                         @method('delete')
 
@@ -72,11 +77,10 @@
     </div>
 
     @endif
-
 </div>
 
 <div class="card-footer">
-    {{$users->links()}}
+    {{$roles->links()}}
 </div>
 @stop
 

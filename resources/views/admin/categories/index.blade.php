@@ -6,8 +6,11 @@
 <div class="d-flex justify-content-between">
 
     <h1>Lista categorias</h1>
+
+    @can('admin.categories.create')
     <a class=" btn btn-secondary " href="{{route('admin.categories.create')}}">Crear
         categoria</a>
+    @endcan
 
 </div>
 
@@ -31,6 +34,9 @@
                 <button class="btn btn-primary">Buscar</button>
             </form>
         </div>
+
+        @if ($categories->count() > 0)
+
         <table class="table">
             <thead>
                 <tr>
@@ -55,6 +61,8 @@
 
                     </td>
                     <td class="btn" width="10px">
+                        @can('admin.categories.destroy')
+
                         <form action="{{route('admin.categories.destroy',$category)}}" method="POST">
                             @csrf
                             @method('delete')
@@ -66,12 +74,20 @@
 
 
                         </form>
+                        @endcan
                     </td>
                 </tr>
                 @endforeach
 
             </tbody>
         </table>
+        @else
+
+        <div class="card-body">
+            <h4>No hay registros</h4>
+        </div>
+
+        @endif
     </div>
 
     <div class="card-footer">

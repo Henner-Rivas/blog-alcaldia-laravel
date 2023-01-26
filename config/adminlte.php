@@ -321,18 +321,31 @@ return [
             'text' => 'users',
             'url'  => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
-            'active' => ['admin/users*']
+            'active' => ['admin/users*'],
+            'can' =>  'admin.users.index'
         ],
         [
             'text' => 'categorias',
             'url'  => 'admin/categories',
-            'active' => ['admin/categories*']
+            'active' => ['admin/categories*'],
+            'can' =>  'admin.categories.index'
+
 
         ],
         [
             'text' => 'etiquetas',
             'url'  => 'admin/tags',
-            'active' => ['admin/tags*']
+            'active' => ['admin/tags*'],
+            'can' =>  'admin.tags.index'
+
+
+        ],
+        [
+            'text' => 'Roles',
+            'url'  => 'admin/roles',
+            'active' => ['admin/roles*'],
+            'can' =>  'admin.roles.index'
+
 
         ],
         [
@@ -378,6 +391,8 @@ return [
             'text'       => 'Lista de articulos',
             'url'        => 'admin/posts',
             'icon'        => 'far fa-fw fa-file',
+            'can' =>  'admin.posts.index'
+
 
         ],
 
@@ -385,6 +400,7 @@ return [
             'text'       => 'crear articulo',
             'url'        => 'admin/posts/create',
             'icon'        => 'far fa-fw fa-file',
+            'can' =>  'admin.posts.create'
 
         ],
 
