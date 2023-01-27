@@ -6,8 +6,12 @@
 <div class="d-flex justify-content-between">
 
     <h1>Lista roles</h1>
+
+    @can('admin.roles.create')
+
     <a class=" btn btn-secondary " href="{{route('admin.roles.create')}}">Crear
         roles</a>
+    @endcan
 
 </div>
 @stop
@@ -47,12 +51,16 @@
                 <td>{{$role->slug}}</td>
 
                 <td width="10px">
+                    @can('admin.roles.edit')
                     <a class="btn btn-primary btn-sm" href={{route('admin.roles.edit',$role)}}>
                         Editar
                     </a>
 
+                    @endcan
+
                 </td>
                 <td class="btn" width="10px">
+                    @can('admin.roles.destroy')
                     <form action="{{route('admin.roles.destroy',$role)}}" method="POST">
                         @csrf
                         @method('delete')
@@ -64,6 +72,8 @@
 
 
                     </form>
+
+                    @endcan
                 </td>
             </tr>
             @endforeach

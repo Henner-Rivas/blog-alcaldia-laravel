@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -10,6 +14,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $tags = Tag::all()->count();
+        $posts = Post::all()->count();
+        $categories = Category::all()->count();
+        $users = User::all()->count();
+
+        return view('admin.index', compact('tags', 'posts', 'categories', 'users'));
     }
 }

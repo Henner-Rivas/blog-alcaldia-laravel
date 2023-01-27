@@ -6,8 +6,11 @@
 <div class="d-flex justify-content-between">
 
     <h1>Lista etiquetas</h1>
+    @can('admin.tags.create')
+
     <a class=" btn btn-secondary " href="{{route('admin.tags.create')}}">Crear
         etiquetas</a>
+    @endcan
 
 </div>
 @stop
@@ -47,12 +50,17 @@
                 <td>{{$tag->slug}}</td>
 
                 <td width="10px">
+                    @can('admin.tags.edit')
+
                     <a class="btn btn-primary btn-sm" href={{route('admin.tags.edit',$tag)}}>
                         Editar
                     </a>
+                    @endcan
 
                 </td>
                 <td class="btn" width="10px">
+                    @can('admin.tags.destroy',)
+
                     <form action="{{route('admin.tags.destroy',$tag)}}" method="POST">
                         @csrf
                         @method('delete')
@@ -60,10 +68,8 @@
                         <button type="submit" class="btn btn-danger btn-sm">
                             Eliminar
                         </button>
-
-
-
                     </form>
+                    @endcan
                 </td>
             </tr>
             @endforeach

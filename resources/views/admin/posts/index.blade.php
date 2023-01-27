@@ -6,8 +6,11 @@
 <div class="d-flex justify-content-between">
 
     <h1>Lista articulo</h1>
+    @can('admin.posts.create')
     <a class=" btn btn-secondary " href="{{route('admin.posts.create')}}">Crear
         articulo</a>
+
+    @endcan
 
 </div>
 @stop
@@ -54,12 +57,18 @@
 
 
                     <td width="10px">
+                        @can('admin.posts.edit')
                         <a class="btn btn-primary btn-sm" href="{{route('admin.posts.edit',$post)}}">
                             Editar
                         </a>
 
+                        @endcan
+
                     </td>
+
                     <td class="btn" width="10px">
+                        @can('admin.posts.destroy')
+
                         <form action="{{route('admin.posts.destroy',$post)}}" method="POST">
                             @csrf
                             @method('delete')
@@ -71,6 +80,8 @@
 
 
                         </form>
+
+                        @endcan
                     </td>
                 </div>
             </tr>

@@ -55,9 +55,11 @@
                     <td>{{$category->slug}}</td>
 
                     <td width="10px">
+                        @can('admin.categories.edit')
                         <a class="btn btn-primary btn-sm" href={{route('admin.categories.edit',$category)}}>
                             Editar
                         </a>
+                        @endcan
 
                     </td>
                     <td class="btn" width="10px">

@@ -42,12 +42,17 @@
                 <td>{{$user->email}}</td>
 
                 <td width="10px">
+                    @can('admin.users.edit')
+
                     <a class="btn btn-primary btn-sm" href={{route('admin.users.edit',$user)}}>
                         Editar
                     </a>
+                    @endcan
 
                 </td>
                 <td class="btn" width="10px">
+                    @can('admin.users.destroy')
+
                     <form action="{{route('admin.users.destroy',$user)}}" method="POST">
                         @csrf
                         @method('delete')
@@ -59,6 +64,7 @@
 
 
                     </form>
+                    @endcan
                 </td>
             </tr>
             @endforeach

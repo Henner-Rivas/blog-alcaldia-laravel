@@ -3,10 +3,15 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>crear role</h1>
+<h1>editar rol</h1>
 @stop
 
 @section('content')
+
+@if (session('info'))
+<div class="alert alert-success"><strong>{{session('info')}}</strong> </div>
+
+@endif
 <div class="card">
     <div class="card-body">
         {!! Form::model($role,['route' => ['admin.roles.update',$role],'autocomplete'=> 'off','files'=>
@@ -14,7 +19,7 @@
 
         <div class="form-group">
             {!! Form::label('name', 'Nombre') !!}
-            {!! Form::text('name', '', ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
+            {!! Form::text('name', null, ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
             @error('name')
             <span class="text-danger">{{$message}}</span>
             @enderror
@@ -27,7 +32,7 @@
             @foreach ($permissions as $permission)
             <div>
                 <label>
-                    {!! Form::checkbox('permissions[]', $permission->id, ['class'=> 'mr-1']) !!}
+                    {!! Form::checkbox('permissions[]', $permission->id,null,['class'=> 'mr-1']) !!}
                     {{$permission->description}}
                 </label>
             </div>
