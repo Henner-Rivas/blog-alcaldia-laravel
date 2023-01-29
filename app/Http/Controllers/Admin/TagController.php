@@ -38,9 +38,9 @@ class TagController extends Controller
     public function create()
     {
         $colors = [
-            'red' => 'Color rojo',
-            'green' => 'verde',
-            'blue' => 'azul',
+            '#A6123A' => 'Color rojo',
+            '#118C3C' => 'verde',
+            '#021E73' => 'azul',
         ];
 
         return view('admin.tags.create', ['colors' => $colors]);
@@ -94,9 +94,9 @@ class TagController extends Controller
     public function edit(Tag $tag)
     {
         $colors = [
-            'red' => 'Color rojo',
-            'green' => 'verde',
-            'blue' => 'azul',
+            '#A6123A' => 'Color rojo',
+            '#118C3C' => 'verde',
+            '#021E73' => 'azul',
         ];
         return view('admin.tags.edit', ['tag' => $tag, 'colors' => $colors]);
     }
