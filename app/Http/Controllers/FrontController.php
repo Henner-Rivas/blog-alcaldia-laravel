@@ -9,6 +9,8 @@ use App\Models\Tag;
 use Faker\Provider\Lorem;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Genert\BBCode\BBCode;
+use Carbon\Carbon;
 
 class FrontController extends Controller
 {
@@ -37,18 +39,18 @@ class FrontController extends Controller
     {
 
         $similares = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->take(5)->get();
-
         $this->authorize('published', $post);
+
         return view('posts.show', ['post' => $post, 'similares' => $similares]);
     }
 
-    public function category(Category $category)
+    public function search(Request $request)
     {
+        $search = $request->search;
 
+        $posts =   Post::where('name', 'LIKE', "%{$search}%")->orwhere('body', 'LIKE', "%{$search}%")->latest()->paginate();
 
-        $posts = Post::where('status', 2)->where('category_id', $category->id)->latest('id')->paginate(6);
-
-        return view('posts.categories', ['posts' => $posts, 'category' => $category]);
+        return view('posts.search', ['posts' => $posts, 'search' => $search]);
     }
 
     public function tag(Tag $tag)
@@ -64,8 +66,8 @@ class FrontController extends Controller
 
     public function slider()
     {
-        $posts = Post::where('status', 2)->latest()->get();
+        $posts = Post::where('status', 2)->where('category_id')->latest()->get();
 
-        return view('components.slider-home', ['post' => $posts]);
+        return view('components.slider-home');
     }
 }

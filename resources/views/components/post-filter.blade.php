@@ -16,13 +16,14 @@
             </h1>
 
             <div class="text-gray-700 text-base">
-                {{$post->extract}}
+                {!! html_entity_decode($post->extract) !!}
+
             </div>
 
             <div class="px-6 py-2">
                 @foreach ($post->tags as $tag)
                 <a href="{{route('posts.tag',$tag)}}"
-                    class="bg-[{{$tag->color}}] cursor-pointer   text-white text-[15px] font-medium mr-2 px-2 py-0.6 rounded">{{$tag->name}}</a>
+                    class=" cursor-pointer   text-white text-[15px] font-medium mr-2 px-2 py-0.6 rounded  bg-{{$tag->color}}">{{$tag->name}}</a>
                 @endforeach
             </div>
 

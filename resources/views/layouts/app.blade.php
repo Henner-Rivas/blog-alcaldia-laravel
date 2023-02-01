@@ -51,8 +51,7 @@
 
     <div class="min-h-screen bg-gray-100 w-full">
 
-        <livewire:navigation />
-
+        @livewire('navigation')
         <!-- Page Content -->
         <main>
             {{ $slot }}

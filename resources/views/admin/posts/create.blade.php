@@ -12,9 +12,10 @@
         {!! Form::open(['route' => 'admin.posts.store','autocomplete'=> 'off','files'=> true]) !!}
 
         {!! Form::hidden('user_id', auth()->user()->id) !!}
+
         <div class="form-group">
             {!! Form::label('name', 'Nombre') !!}
-            {!! Form::text(' name', null, ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
+            {!! Form::text('name', '', ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
             @error('name')
             <span class="text-danger">{{$message}}</span>
             @enderror
@@ -68,7 +69,9 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="img-wrapper">
-                    <img id="picture" src="" alt="img">
+                    <img id="picture"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png"
+                        alt="no imagen">
 
                 </div>
 
@@ -113,15 +116,15 @@
 
 @stop
 
+@push('js')
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
 
+@endpush
 
 @section('js')
 <script src=" @vite(['public/vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js'])
 ">
-
-
 </script>
-
 <script>
     $(document).ready( function() {
   $("#name").stringToSlug({
@@ -148,6 +151,20 @@
 
     }
 
+</script>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#extract' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+        ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>
 @stop
 
