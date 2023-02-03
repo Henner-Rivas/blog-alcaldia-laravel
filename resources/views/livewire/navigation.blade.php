@@ -12,20 +12,7 @@
                     --}}
                 </div>
 
-                <div x-show="openLang" x-on:click.away="openLang=false"
-                    class="bg-white shadow absolute z-50 top-[40px] w-[220px] p-2 rounded-sm">
-                    <p>Cambia el idioma del sitio</p>
-                    <div class="flex gap-3">
-                        <span>
-                            <img src="{{ Vite::asset('resources/images/espana.png') }} " class="h-[15px] w-full">
 
-                        </span>
-                        <span>
-                            <img src="{{ Vite::asset('resources/images/inglaterra.png') }} " class="h-[15px] w-full">
-
-                        </span>
-                    </div>
-                </div>
             </div>
             @auth
             <div class="flex items-center order-2" x-data="{open:false}">
@@ -208,11 +195,7 @@
                         class="block py-2 pl-3 pr-4 text-gray-700
                              rounded md:hover:bg-transparent hover:text-my_red md:p-0 {{request()->routeIs('pages.index') ? 'font-bold text-my_red' : '' }}">Inicio</a>
                 </li>
-                <li>
-                    <a href=" {{route('pages.sala-prensa')}}"
-                        class="{{request()->routeIs('pages.sala-prensa') ? 'font-bold text-my_red' : '' }} block py-2 pl-3 pr-4  rounded   hover:font-medium md:hover:bg-transparent hover:text-my_red md:p-0  text-black">Sala
-                        de prensa</a>
-                </li>
+
                 <li x-data="{openDesple:false}" class="relative">
                     <div x-on:click="openDesple=true"
                         class=" py-2 pl-3 pr-4 flex cursor-pointer items-center hover:font-medium  text-gray-700 rounded  md:hover:bg-transparent hover:text-my_red md:p-0  ">
@@ -233,7 +216,7 @@
                             <li>
                                 <a href={{ route('posts.tag', $tag) }}
                                     class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">{{$tag->name}}
-                                    1</a>
+                                </a>
                             </li>
                             @endforeach
                         </ul>
@@ -247,8 +230,14 @@
 
                 <li>
                     <a href="{{route('pages.tramites-y-servicios')}}"
-                        class="{{request()->routeIs('pages.tramites-y-servicios') ? 'font-bold text-my_red' : '' }} block py-2 pl-3 pr-4  rounded  md:hover:bg-transparent hover:text-my_red md:p-0 hover:font-medium text-gray-700">Servicios
+                        class="{{request()->routeIs('pages.tramites-y-servicios') ? 'font-bold text-my_red' : '' }} block py-2 pl-3 pr-4  rounded  md:hover:bg-transparent hover:text-my_red md:p-0 hover:font-medium text-gray-700">
+                        Trámites y Servicios
                     </a>
+                </li>
+                <li>
+                    <a href="https://www.quibdo-choco.gov.co/Conectividad/Paginas/Estructura-y-secci%C3%B3n-Men%C3%BA-Participa-.aspx"
+                        target="_blank"
+                        class="{{request()->routeIs('pages.sala-prensa') ? 'font-bold text-my_red' : '' }} block py-2 pl-3 pr-4  rounded   hover:font-medium md:hover:bg-transparent hover:text-my_red md:p-0  text-black">Participa</a>
                 </li>
 
 

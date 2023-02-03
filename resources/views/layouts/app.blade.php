@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
 
     <title>{{ 'Alcaldia de Quibdó' }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -12,6 +13,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/images/logo-escudo.png') }}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -43,6 +45,18 @@
             margin: auto;
             background: linear-gradient(to right, rgba(255, 255, 255, 1) 36%, rgba(255, 255, 255, .61) 61%, rgba(246, 246, 246, .17) 89%, rgba(255, 255, 255, 0) 100%);
         }
+
+        .title-main {
+            border-bottom: 5px solid #021E73;
+            display: block;
+            font-family: "roboto_condensedbold";
+            font-size: 24px;
+            line-height: 24px;
+            padding-bottom: 5px;
+            padding-top: 27px;
+            text-transform: uppercase;
+            width: 300px;
+        }
     </style>
 </head>
 
@@ -65,6 +79,10 @@
     @stack('scripts')
 
     @livewireScripts
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
 </body>
 
 </html>

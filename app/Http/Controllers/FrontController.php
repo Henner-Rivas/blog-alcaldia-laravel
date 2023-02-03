@@ -17,7 +17,7 @@ class FrontController extends Controller
     public function index()
     {
 
-        $posts = Post::where('status', 2)->latest()->get();
+        $posts = Post::where('status', 2)->latest()->paginate(10);
 
 
 
@@ -48,7 +48,7 @@ class FrontController extends Controller
     {
         $search = $request->search;
 
-        $posts =   Post::where('name', 'LIKE', "%{$search}%")->orwhere('body', 'LIKE', "%{$search}%")->latest()->paginate();
+        $posts =   Post::where('status', 2)->where('name', 'LIKE', "%{$search}%")->orwhere('body', 'LIKE', "%{$search}%")->orwhere('extract', 'LIKE', "%{$search}%")->latest()->paginate(2);
 
         return view('posts.search', ['posts' => $posts, 'search' => $search]);
     }

@@ -2,11 +2,11 @@
 <div>
 
     <article class="shadow bg-white rounded-lg overflow-hidden">
-        <div>
+        <a href="{{route('posts.show',$post)}}">
 
             <img src="@if($post->image){{Storage::url($post->image->url)}}
-                @endif" alt="{{$post->name}}" class="rounded h-[15rem] w-full object-cover">
-        </div>
+                    @endif" alt="{{$post->name}}" class="rounded h-[15rem] w-full object-cover">
+        </a>
 
         <div class="px-6 py-3">
             <h1>
