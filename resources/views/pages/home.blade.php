@@ -3,7 +3,7 @@
     @include('components/slider-home')
 
     <div class=" pt-4 bg-gray-200 w-full ">
-        <div class="flex max-w-6xl my-0 mx-auto justify-center flex-col items-center">
+        <div class="flex max-w-7xl my-0 mx-auto justify-center flex-col items-center">
 
             <h2 class="title-main">NOTICIAS DE LA SEMANA</h2>
 
@@ -49,42 +49,5 @@
 
     </div>
 
-    {{-- <div class=" py-8">
-        <div class="flex flex-col max-w-7xl my-0 mx-auto justify-center items-center">
 
-            <nav aria-label="Page navigation example" class="py-5">
-                <ul class="inline-flex -space-x-px">
-                    <li>
-                        <a href="#"
-                            class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 ">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">1</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page"
-                            class="px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 ">3</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">4</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">5</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 ">Next</a>
-                    </li>
-                </ul>
-            </nav>
-
-        </div>
-    </div> --}}
 </x-app-layout>

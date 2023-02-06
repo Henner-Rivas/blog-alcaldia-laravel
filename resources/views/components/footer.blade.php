@@ -1,6 +1,189 @@
+<div class="bg-white">
+    @push('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+    @endpush
+
+
+
+    <div class="swiper mySwiper2 max-w-6xl">
+        <div class="swiper-wrapper my-3">
+            <div class="swiper-slide">
+                <a href="https://www.ejercito.mil.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/22.png') }}" alt="ejercito">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.armada.mil.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/23.png') }}" alt="armada">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="http://www.lexbase.co/">
+                    <img src="{{ Vite::asset('resources/images/20.png') }}" alt="">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="http://www.mintic.gov.co/portal/604/w3-channel.html" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/4.png') }}" alt="mintic">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="http://horalegal.inm.gov.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/7.png') }}" alt="horalegal">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.quibdo-choco.gov.co/Style%20Library/images/logos/8.png" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/8.png') }}" alt="">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.sisben.gov.co/">
+                    <img src="{{ Vite::asset('resources/images/13.png') }}" alt="sisben">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="http://www.policia.gov.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/17.png') }}" alt="policia">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.quibdo-choco.gov.co/Style%20Library/images/logos/28.png" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/28.png') }}" alt="quibdo">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="http://www.choco.gov.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/46.png') }}" alt="choco">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="http://www.1cero1.com/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/33.png') }}" alt="1cero1">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.simit.org.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/32.png') }}" alt="simit">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.armada.mil.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/30.png') }}" alt="armada">
+                </a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href="https://www.nomasfilas.gov.co/" target="_blank">
+                    <img src="{{ Vite::asset('resources/images/27.png') }}" alt="">
+                </a>
+
+            </div>
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+
+
+
+    @push('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper2", {
+      slidesPerView: 1,
+      spaceBetween: 4,
+      loop: true,
+      autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        "@0.00": {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        "@0.75": {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        "@1.00": {
+          slidesPerView: 6,
+          spaceBetween: 40,
+        },
+        "@1.50": {
+          slidesPerView: 9,
+          spaceBetween: 50,
+        },
+      },
+    });
+    </script>
+    @endpush
+
+</div>
 <hr>
 
-<footer class="flex  flex-col gap-8 max-w-8xl bottom-0 mt-4 ">
+<footer class="flex  flex-col gap-8 w-full bottom-0 mt-4 ">
 
 
 
