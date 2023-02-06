@@ -13,8 +13,8 @@
                 @foreach ($posts as $post)
                 <a href={{route('posts.show',$post)}} class="w-[400px] flex md:w-[550px]">
                     <div class="relative w-[220px] ">
-                        <img src="@if($post->image){{Storage::url($post->image->url)}}  @endif" alt="Messi"
-                            class="w-full h-full object-cover ">
+                        <img src="@if($post->image) {{Storage::url($post->image->url  )}} @else https://caracoltv.brightspotcdn.com/dims4/default/3749817/2147483647/strip/true/crop/1500x839+0+0/resize/1000x559!/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2Fe5%2F35%2Fa26ffe6c4119b2aab033e0b13a93%2Fquibdo-festival-atrato-detonante.jpg @endif"
+                            alt="Messi" class="w-full h-full object-cover ">
                         <span
                             class="bg-gray-100 text-my_red text-[16px] font-bold absolute top-[0px] p-1">{{$post->updated_at->format('d/m/Y')}}</span>
                     </div>
