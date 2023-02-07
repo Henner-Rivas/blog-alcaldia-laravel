@@ -18,8 +18,15 @@ class FrontController extends Controller
     {
 
         $posts = Post::where('status', 2)->latest()->paginate(10);
+        /*         $slider = Post::where('status', 2)->where('category', 'Articulos')->latest()->paginate(10);
+ */
+
+        $category = Category::select('name')->get();
+        $slider = Post::where('status', 2)->latest()->with('category')->select('name')->paginate(10);
 
 
+
+        return $category;
 
         return view('pages.home', ['posts' => $posts]);
     }

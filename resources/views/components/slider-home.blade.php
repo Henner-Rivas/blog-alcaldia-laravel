@@ -72,7 +72,8 @@
                 </a>
             </div>
             <div class="w-full md:w-[60%] image">
-                <img src="@if($post->image){{Storage::url($post->image->url)}}@endif" alt="{{$post->name}}">
+                <img src="@if($post->image){{Storage::url($post->image->url)}}@else https://caracoltv.brightspotcdn.com/dims4/default/3749817/2147483647/strip/true/crop/1500x839+0+0/resize/1000x559!/quality/90/?url=http%3A%2F%2Fcaracol-brightspot.s3.amazonaws.com%2Fe5%2F35%2Fa26ffe6c4119b2aab033e0b13a93%2Fquibdo-festival-atrato-detonante.jpg @endif"
+                    alt="{{$post->name}}">
             </div>
         </div>
 
