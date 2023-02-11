@@ -26,7 +26,6 @@ class FrontController extends Controller
 
 
 
-        return $category;
 
         return view('pages.home', ['posts' => $posts]);
     }
