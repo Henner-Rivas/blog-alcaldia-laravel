@@ -48,7 +48,7 @@
 
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        @foreach ($posts as $post)
+        @foreach ($postsSlider as $post)
 
         <div class="swiper-slide  flex flex-col md:flex-row  h-[70vh] md:h-[55vh]">
             <div

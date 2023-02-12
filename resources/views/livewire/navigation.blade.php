@@ -108,7 +108,7 @@
                         d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                         clip-rule="evenodd"></path>
                 </svg>
-                <span class="sr-only">Search</span>
+                <span class="sr-only">Buscar</span>
             </button>
 
             <div class="relative hidden md:block md:my-0 md:mx-auto">
@@ -126,7 +126,7 @@
                 <form action="{{route('posts.search')}}" method="GET" class="d-flex">
                     <input type="text" id="search-navbar" autocomplete="off" name="search"
                         class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-light_red focus:border-light_red   dark:placeholder-gray-400 "
-                        placeholder="Search..." value="{{request('search')}}">
+                        placeholder="Buscar..." value="{{request('search')}}">
                 </form>
 
 
@@ -158,7 +158,7 @@
                 </div>
                 <input type="text" id="search-navbar" autocomplete="off"
                     class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-my_red    dark:focus:ring-my_red "
-                    placeholder="Search...">
+                    placeholder="Buscar...">
             </div>
             <ul
                 class="flex flex-col   p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0  md:font-medium md:border-0 md:bg-white   dark:border-gray-700">

@@ -15,7 +15,7 @@
                 </a>
             </h1>
 
-            <div class="text-gray-700 text-base">
+            <div class="text-gray-700 text-base post-detail">
                 {!! html_entity_decode($post->extract) !!}
 
             </div>

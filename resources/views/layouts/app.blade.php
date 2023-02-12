@@ -58,6 +58,10 @@
             text-transform: uppercase;
             width: 300px;
         }
+
+        .post-detail a {
+            color: #0645ad
+        }
     </style>
 </head>
 

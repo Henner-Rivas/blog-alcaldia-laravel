@@ -16,18 +16,10 @@ class FrontController extends Controller
 {
     public function index()
     {
+        $sliders = Post::where('status', 2)->where('category_id', '=', 2)->latest()->paginate(6);
 
-        $posts = Post::where('status', 2)->latest()->paginate(10);
-        /*         $slider = Post::where('status', 2)->where('category', 'Articulos')->latest()->paginate(10);
- */
-
-        $category = Category::select('name')->get();
-        $slider = Post::where('status', 2)->latest()->with('category')->select('name')->paginate(10);
-
-
-
-
-        return view('pages.home', ['posts' => $posts]);
+        $posts = Post::where('status', 2)->where('category_id', '=', 1)->latest()->paginate(10);
+        return view('pages.home', ['posts' => $posts, 'postsSlider' => $sliders]);
     }
     public function tramites()
     {
@@ -54,7 +46,7 @@ class FrontController extends Controller
     {
         $search = $request->search;
 
-        $posts =   Post::where('status', 2)->where('name', 'LIKE', "%{$search}%")->orwhere('body', 'LIKE', "%{$search}%")->orwhere('extract', 'LIKE', "%{$search}%")->latest()->paginate(2);
+        $posts =   Post::where('status', 2)->where('name', 'LIKE', "%{$search}%")->orwhere('body', 'LIKE', "%{$search}%")->orwhere('extract', 'LIKE', "%{$search}%")->latest()->paginate(5);
 
         return view('posts.search', ['posts' => $posts, 'search' => $search]);
     }
@@ -72,8 +64,9 @@ class FrontController extends Controller
 
     public function slider()
     {
-        $posts = Post::where('status', 2)->where('category_id')->latest()->get();
+        $posts = Post::where('status', 2)->where('category_id', '=', 2)->latest()->paginate(6);
 
-        return view('components.slider-home');
+
+        return view('pages.home', ['postsSlider', $posts]);
     }
 }
