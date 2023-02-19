@@ -249,7 +249,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">
+                                <a href="{{route('pages.programas')}}"
+                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">
                                     Programas
                                 </a>
                             </li>

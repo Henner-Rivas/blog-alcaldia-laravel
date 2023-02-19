@@ -27,6 +27,10 @@ Route::controller(FrontController::class)->group(function () {
     Route::get('/documentos', 'documents')->name('pages.documents');
     Route::get('/nuestros-planes', 'planes')->name('pages.nuestros-planes');
     Route::get('/nuestros-planes/{post}', 'show_planes')->name('pages.show-planes');
+    Route::get('/nuestros-planes/{post}', 'show_planes')->name('pages.show-planes');
+    Route::get('/comment/{post}', 'storeComment')->name('comments.show');
+    Route::get('/programas', 'programas')->name('pages.programas');
+    Route::get('/programas/{post}', 'show_programa')->name('pages.show-programa');
 });
 
 

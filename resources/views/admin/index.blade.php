@@ -49,7 +49,7 @@
         </a>
     </div>
 
-
+    {{--
     <div class="small-box " style="background: #71A63C">
         <div class="inner">
             <h3 class="text-white">{{$categories}}</h3>
@@ -60,6 +60,32 @@
         </div>
         <a href="{{route('admin.categories.index')}}" class="small-box-footer">
             ver categorias <i class="fas fa-arrow-circle-right"></i>
+        </a>
+    </div> --}}
+
+    <div class="small-box " style="background: #71A63C">
+        <div class="inner">
+            <h3 class="text-white">{{$comments}}</h3>
+            <p class="text-white">Numero de comentarios</p>
+        </div>
+        <div class="icon">
+            <i class="fas fa-solid fa-barcode"></i>
+        </div>
+        <a href="{{route('admin.categories.index')}}" class="small-box-footer">
+            ver comentarios <i class="fas fa-arrow-circle-right"></i>
+        </a>
+    </div>
+
+    <div class="small-box " style="background: #A6123A">
+        <div class="inner">
+            <h3 class="text-white">{{$documents}}</h3>
+            <p class="text-white">Numero de archivos</p>
+        </div>
+        <div class="icon">
+            <i class="fas fa-solid fa-barcode"></i>
+        </div>
+        <a href="{{route('admin.archivos.index')}}" class="small-box-footer">
+            ver archivos <i class="fas fa-arrow-circle-right"></i>
         </a>
     </div>
 </div>

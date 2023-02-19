@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Category;
@@ -10,7 +11,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller
+class ProgramaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,8 +33,8 @@ class PostController extends Controller
 
         $categories = Category::pluck('name', 'id');
 
-        $posts =   Post::where('name', 'LIKE', "%{$search}%")->where('category_id', '=', 1)->latest()->paginate();
-        return view('admin.posts.index', ['posts' => $posts, 'categories' => $categories]);
+        $posts =   Post::where('name', 'LIKE', "%{$search}%")->where('category_id', '=', 4)->latest()->paginate();
+        return view('admin.programas.index', ['posts' => $posts, 'categories' => $categories]);
     }
 
     /**
@@ -47,7 +48,7 @@ class PostController extends Controller
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
-        return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
+        return view('admin.programas.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -61,7 +62,7 @@ class PostController extends Controller
 
 
         /*         return $request->file('file');
-        */
+         */
 
 
         $post = Post::create($request->all());
@@ -78,7 +79,7 @@ class PostController extends Controller
         if ($request->tags) {
             $post->tags()->attach($request->tags);
         }
-        return redirect()->route('admin.posts.edit', $post)->with('info', 'se ha creado el articulo con exito');
+        return redirect()->route('admin.programas.edit', $post)->with('info', 'se ha creado el articulo con exito');
     }
 
     /**
@@ -92,7 +93,7 @@ class PostController extends Controller
         //
 
         /*         return view('admin.posts.show', ['post' => $post]);
- */
+  */
     }
 
     /**
@@ -101,12 +102,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Post $programa)
     {
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
-        return view('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
+        return view('admin.programas.edit', ['programa' => $programa, 'tags' => $tags, 'categories' => $categories]);
     }
 
     /**
@@ -116,32 +117,32 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostRequest $request, Post $post)
+    public function update(StorePostRequest $request, Post $programa)
     {
-        $post->update($request->all());
+        $programa->update($request->all());
         if ($request->file('file')) {
             $url =  Storage::put('public/posts', $request->file('file'));
-            if ($post->image) {
-                Storage::delete($post->image->url);
-                $post->image->update([
+            if ($programa->image) {
+                Storage::delete($programa->image->url);
+                $programa->image->update([
                     'url' => $url,
                 ]);
             } else {
-                $post->image()->create([
+                $programa->image()->create([
                     'url' => $url
                 ]);
             }
         }
         /*         $this->authorize('author', $post);
- */
+  */
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
 
         if ($request->tags) {
-            $post->tags()->sync($request->tags);
+            $programa->tags()->sync($request->tags);
         }
-        return redirect()->route('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
+        return redirect()->route('admin.programas.edit', ['post' => $programa, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
     }
 
     /**
@@ -150,15 +151,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $programa)
     {
 
-        if ($post->image) {
-            Storage::delete($post->image->url);
+        if ($programa->image) {
+            Storage::delete($programa->image->url);
         }
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with('info', 'La articulo se ha eliminado con exito');
+        $programa->delete();
+        return redirect()->route('admin.programas.index')->with('info', 'La articulo se ha eliminado con exito');
     }
-
-    /* mostrar planes */
 }

@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('description');
+            $table->enum('status', [0, 1])->default(0);
+
             $table->foreignId('parent_id')->nullable()->references('id')->on('comments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

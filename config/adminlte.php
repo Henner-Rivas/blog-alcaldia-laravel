@@ -352,7 +352,7 @@ return [
 
                 [
                     'text' => 'Programas',
-                    'url'  => '#',
+                    'url'  => 'admin/programas',
                 ],
                 [
                     'text' => 'Archivos',
@@ -361,7 +361,7 @@ return [
             ],
         ],
         [
-            'text' => 'Agregar articulos carrucel',
+            'text' => 'carrucel',
             'url'  => 'admin/sliders',
             'active' => ['admin/sliders*'],
         ],
@@ -380,6 +380,12 @@ return [
             'text'       => 'crear articulo',
             'url'        => 'admin/posts/create',
             'icon'        => 'far fa-fw fa-file',
+            'can' =>  'admin.posts.create'
+
+        ],
+        [
+            'text'       => 'Ver comentarios',
+            'url'        => 'admin/comments',
             'can' =>  'admin.posts.create'
 
         ],

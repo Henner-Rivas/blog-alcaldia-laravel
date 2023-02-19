@@ -40,8 +40,8 @@ class Post extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function commments()
+    public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->whereNull('parent_id',);
     }
 }

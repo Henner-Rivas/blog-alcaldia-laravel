@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Document;
 use App\Models\Post;
 use App\Models\Tag;
@@ -24,6 +25,29 @@ class FrontController extends Controller
     {
         return view('pages.show-planes', ['post' => $post]);
     }
+    public function show_programa(Post $post)
+    {
+        return view('pages.show-programa', ['post' => $post]);
+    }
+
+    public function storeComment(Request $request, Post $post)
+    {
+
+
+        $comment = new Comment();
+        $comment->description = $request->description;
+        $comment->status = 0;
+
+        $comment->user_id = \auth()->id();
+        $comment->parent_id = $request->parent_id;
+        /*         return $comment;
+ */
+        $post->comments()->save($comment);
+
+        return redirect()->back();
+    }
+
+
 
 
     public function planes()
@@ -32,7 +56,12 @@ class FrontController extends Controller
         $posts =   Post::where('category_id', '=', 3)->latest()->paginate();
         return view('pages.nuestros-planes', ['posts' => $posts]);
     }
+    public function programas()
+    {
 
+        $posts =   Post::where('category_id', '=', 4)->latest()->paginate();
+        return view('pages.programas', ['posts' => $posts]);
+    }
     public function tramites()
     {
         return view('pages.tramites-service');
@@ -50,7 +79,6 @@ class FrontController extends Controller
 
         $similares = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->take(5)->get();
         $this->authorize('published', $post);
-
         return view('posts.show', ['post' => $post, 'similares' => $similares]);
     }
 

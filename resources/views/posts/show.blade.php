@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="container my-0 mx-auto md:px-8 py-5 gap-5 ">
+    <div class="container my-0 mx-auto md:px-8 py-5 gap-5 max-w-7xl">
         <nav class="flex my-4" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
@@ -90,6 +90,12 @@
             </div>
 
             {{-- contenido relacionado --}}
+            <div class="flex flex-col w-full col-span-2 my-0 mx-auto">
+                @include('comments.show',['list'=> $post->comments])
+
+
+                @include('comments.form')
+            </div>
         </div>
     </div>
 </x-app-layout>
