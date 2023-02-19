@@ -171,7 +171,7 @@
                 <li x-data="{openDesple:false}" class="relative">
                     <div x-on:click="openDesple=true"
                         class=" py-2 pl-3 pr-4 flex cursor-pointer items-center hover:font-medium  text-gray-700 rounded  md:hover:bg-transparent hover:text-my_red md:p-0  ">
-                        Etiquetas
+                        Documentos
 
                         <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -184,13 +184,20 @@
                         class="z-40  font-normal bg-white divide-y absolute divide-gray-100 rounded shadow w-44 ">
                         <ul class="py-1 text-sm text-gray-700">
 
-                            @foreach ($tags as $tag)
                             <li>
-                                <a href={{ route('posts.tag', $tag) }}
-                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">{{$tag->name}}
+                                <a href="" class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">Planes
                                 </a>
                             </li>
-                            @endforeach
+                            <li>
+                                <a href="" class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">
+                                    Programas
+                                </a>
+                            </li>
+                            <li>
+                                <a href=""
+                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">Documentos
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -220,11 +227,10 @@
                         class="block py-2 pl-3 pr-4 text-gray-700
                              rounded md:hover:bg-transparent hover:text-my_red md:p-0 {{request()->routeIs('pages.index') ? 'font-bold text-my_red' : '' }}">Inicio</a>
                 </li>
-
                 <li x-data="{openDesple:false}" class="relative">
                     <div x-on:click="openDesple=true"
                         class=" py-2 pl-3 pr-4 flex cursor-pointer items-center hover:font-medium  text-gray-700 rounded  md:hover:bg-transparent hover:text-my_red md:p-0  ">
-                        Etiquetas
+                        Documentos
 
                         <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -237,13 +243,21 @@
                         class="z-40  font-normal bg-white divide-y absolute divide-gray-100 rounded shadow w-44 ">
                         <ul class="py-1 text-sm text-gray-700">
 
-                            @foreach ($tags as $tag)
                             <li>
-                                <a href={{ route('posts.tag', $tag) }}
-                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">{{$tag->name}}
+                                <a href={{route('pages.nuestros-planes')}}
+                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">Planes
                                 </a>
                             </li>
-                            @endforeach
+                            <li>
+                                <a href="" class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">
+                                    Programas
+                                </a>
+                            </li>
+                            <li>
+                                <a href={{route('pages.documents')}}
+                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">Archivos
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

@@ -10,8 +10,9 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller
+class PlanesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -32,8 +33,8 @@ class PostController extends Controller
 
         $categories = Category::pluck('name', 'id');
 
-        $posts =   Post::where('name', 'LIKE', "%{$search}%")->where('category_id', '=', 1)->latest()->paginate();
-        return view('admin.posts.index', ['posts' => $posts, 'categories' => $categories]);
+        $posts =   Post::where('name', 'LIKE', "%{$search}%")->where('category_id', '=', 3)->latest()->paginate();
+        return view('admin.planes.index', ['posts' => $posts, 'categories' => $categories]);
     }
 
     /**
@@ -47,7 +48,7 @@ class PostController extends Controller
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
-        return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
+        return view('admin.planes.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -78,7 +79,7 @@ class PostController extends Controller
         if ($request->tags) {
             $post->tags()->attach($request->tags);
         }
-        return redirect()->route('admin.posts.edit', $post)->with('info', 'se ha creado el articulo con exito');
+        return redirect()->route('admin.planes.edit', $post)->with('info', 'se ha creado el articulo con exito');
     }
 
     /**
@@ -101,12 +102,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Post $plane)
     {
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
-        return view('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
+        return view('admin.planes.edit', ['plane' => $plane, 'tags' => $tags, 'categories' => $categories]);
     }
 
     /**
@@ -116,18 +117,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostRequest $request, Post $post)
+    public function update(StorePostRequest $request, Post $plane)
     {
-        $post->update($request->all());
+        $plane->update($request->all());
         if ($request->file('file')) {
             $url =  Storage::put('public/posts', $request->file('file'));
-            if ($post->image) {
-                Storage::delete($post->image->url);
-                $post->image->update([
+            if ($plane->image) {
+                Storage::delete($plane->image->url);
+                $plane->image->update([
                     'url' => $url,
                 ]);
             } else {
-                $post->image()->create([
+                $plane->image()->create([
                     'url' => $url
                 ]);
             }
@@ -139,9 +140,9 @@ class PostController extends Controller
 
 
         if ($request->tags) {
-            $post->tags()->sync($request->tags);
+            $plane->tags()->sync($request->tags);
         }
-        return redirect()->route('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
+        return redirect()->route('admin.planes.edit', ['post' => $plane, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
     }
 
     /**
@@ -150,16 +151,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $plane)
     {
-        return $post;
 
-        if ($post->image) {
-            Storage::delete($post->image->url);
+        if ($plane->image) {
+            Storage::delete($plane->image->url);
         }
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with('info', 'La articulo se ha eliminado con exito');
+        $plane->delete();
+        return redirect()->route('admin.planes.index')->with('info', 'La articulo se ha eliminado con exito');
     }
-
-    /* mostrar planes */
 }

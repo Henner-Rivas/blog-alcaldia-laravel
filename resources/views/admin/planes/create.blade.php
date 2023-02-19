@@ -32,7 +32,7 @@
         <div class="form-group">
             {{-- {!! Form::label('category_id', 'Categoria') !!}
             --}}
-            {!! Form::hidden('category_id', 1) !!}
+            {!! Form::hidden('category_id', 3) !!}
 
             {{-- @error('color')
             <span class="text-danger">{{$message}}</span>

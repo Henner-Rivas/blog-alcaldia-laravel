@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>crear artitulo</h1>
+<h1>crear carrucel</h1>
 @stop
 
 @section('content')
@@ -32,7 +32,7 @@
         <div class="form-group">
             {{-- {!! Form::label('category_id', 'Categoria') !!}
             --}}
-            {!! Form::hidden('category_id', 1) !!}
+            {!! Form::hidden('category_id', 2) !!}
 
             {{-- @error('color')
             <span class="text-danger">{{$message}}</span>
@@ -111,7 +111,7 @@
 
 
 
-        {!! Form::submit('crear artitulo', ['class'=> 'btn btn-primary']) !!}
+        {!! Form::submit('crear carrucel', ['class'=> 'btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
 </div>

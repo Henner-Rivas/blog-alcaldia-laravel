@@ -93,8 +93,3 @@
         </div>
     </div>
 </x-app-layout>
-
-<script>
-    document.querySelector("a").target = "_blank";
-
-</script>

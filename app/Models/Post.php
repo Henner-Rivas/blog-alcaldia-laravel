@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Category;
 use App\Models\User;
-use App\Models\Image;
+use App\Models\Comment;
 
 class Post extends Model
 {
@@ -38,5 +38,10 @@ class Post extends Model
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function commments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

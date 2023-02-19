@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +24,11 @@ Route::controller(FrontController::class)->group(function () {
 
     Route::get('/tramites-y-servicios', 'tramites')->name('pages.tramites-y-servicios');
     Route::get('/transparencia', 'transparencia')->name('pages.transparencia');
-    Route::get('/sala-prensa', 'prensa')->name('pages.sala-prensa');
+    Route::get('/documentos', 'documents')->name('pages.documents');
+    Route::get('/nuestros-planes', 'planes')->name('pages.nuestros-planes');
+    Route::get('/nuestros-planes/{post}', 'show_planes')->name('pages.show-planes');
 });
+
 
 
 Route::middleware([

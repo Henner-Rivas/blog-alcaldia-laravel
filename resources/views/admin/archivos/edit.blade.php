@@ -3,19 +3,24 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>crear artitulo</h1>
+<h1>editar articulo</h1>
 @stop
 
 @section('content')
+
+@if (session('info'))
+<div class="alert alert-success"><strong>{{session('info')}}</strong> </div>
+@endif
+
 <div class="card">
     <div class="card-body">
-        {!! Form::open(['route' => 'admin.posts.store','autocomplete'=> 'off','files'=> true]) !!}
+        {!! Form::model($post,['route' => ['admin.posts.update',$post],'autocomplete'=> 'off','files'=>
+        true,'method'=> 'put',]) !!}
 
         {!! Form::hidden('user_id', auth()->user()->id) !!}
-
         <div class="form-group">
             {!! Form::label('name', 'Nombre') !!}
-            {!! Form::text('name', '', ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
+            {!! Form::text(' name', $post->name, ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
             @error('name')
             <span class="text-danger">{{$message}}</span>
             @enderror
@@ -30,13 +35,11 @@
             @enderror
         </div>
         <div class="form-group">
-            {{-- {!! Form::label('category_id', 'Categoria') !!}
-            --}}
-            {!! Form::hidden('category_id', 1) !!}
-
-            {{-- @error('color')
+            {!! Form::label('category_id', 'Categoria') !!}
+            {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+            @error('category_id')
             <span class="text-danger">{{$message}}</span>
-            @enderror --}}
+            @enderror
         </div>
 
         <div class="form-group">
@@ -71,9 +74,12 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="img-wrapper">
-                    <img id="picture"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png"
-                        alt="no imagen">
+                    @if ($post->image)
+
+                    <img id="picture" src="{{Storage::url($post->image->url)}}" alt="{{$post->name}}">
+                    @else
+                    <img src="" alt="no tiene ">
+                    @endif
 
                 </div>
 
@@ -111,10 +117,11 @@
 
 
 
-        {!! Form::submit('crear artitulo', ['class'=> 'btn btn-primary']) !!}
+        {!! Form::submit('editar artitulo', ['class'=> 'btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
 </div>
+
 
 @stop
 
@@ -176,6 +183,8 @@
         position: relative;
 
     }
+
+
 
     .img-wrapper img {
         object-fit: cover;

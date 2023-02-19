@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-
+use App\Models\Document;
 use App\Models\Post;
 use App\Models\Tag;
 use Faker\Provider\Lorem;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Genert\BBCode\BBCode;
-use Carbon\Carbon;
+
 
 class FrontController extends Controller
 {
@@ -21,6 +20,19 @@ class FrontController extends Controller
         $posts = Post::where('status', 2)->where('category_id', '=', 1)->latest()->paginate(10);
         return view('pages.home', ['posts' => $posts, 'postsSlider' => $sliders]);
     }
+    public function show_planes(Post $post)
+    {
+        return view('pages.show-planes', ['post' => $post]);
+    }
+
+
+    public function planes()
+    {
+
+        $posts =   Post::where('category_id', '=', 3)->latest()->paginate();
+        return view('pages.nuestros-planes', ['posts' => $posts]);
+    }
+
     public function tramites()
     {
         return view('pages.tramites-service');
@@ -68,5 +80,20 @@ class FrontController extends Controller
 
 
         return view('pages.home', ['postsSlider', $posts]);
+    }
+
+
+
+
+    public function documents()
+    {
+
+        $archivos =   Document::latest()->paginate();
+
+        return view('pages.documents', ['archivos' => $archivos]);
+    }
+    public function programs()
+    {
+        return view('pages.documents');
     }
 }

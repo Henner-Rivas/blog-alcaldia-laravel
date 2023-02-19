@@ -31,6 +31,11 @@ class Rolseeder extends Seeder
         Permission::create(['name' => 'admin.posts.edit', 'description' => 'editar articulos'])->syncRoles([$admin]);;
         Permission::create(['name' => 'admin.posts.destroy', 'description' => 'eliminar articulos'])->syncRoles([$admin]);;
 
+        Permission::create(['name' => 'admin.slider.index', 'description' => 'ver lista de carrucel '])->syncRoles([$admin, $role2]);;
+        Permission::create(['name' => 'admin.slider.create', 'description' => 'crear carrucel'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.slider.edit', 'description' => 'editar carrucel'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'admin.slider.destroy', 'description' => 'eliminar carrucel'])->syncRoles([$admin]);;
+
         Permission::create(['name' => 'admin.tags.index', 'description' => 'ver listado de etiquetas'])->syncRoles([$admin, $role2]);;
         Permission::create(['name' => 'admin.tags.create', 'description' => 'crear etiqueta'])->syncRoles([$admin]);;
         Permission::create(['name' => 'admin.tags.edit', 'description' => 'editar etiqueta'])->syncRoles([$admin]);;

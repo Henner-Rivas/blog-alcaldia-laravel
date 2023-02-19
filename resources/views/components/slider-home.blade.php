@@ -66,7 +66,7 @@
                     @endforeach
                 </div>
 
-                <a href="{{route('posts.show',$post)}}"
+                <a href="{{route('posts.show',$post)}}" target="_blank"
                     class="py-2 px-3 mb-6 w-full md:w-[200px] text-xs bg-white text-black rounded-lg">
                     CONOCE MAS
                 </a>

@@ -2,38 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePostRequest;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Tag;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller
+use App\Http\Controllers\Controller;
+use App\Models\Document;
+use App\Models\Post;
+use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\Double;
+use PhpParser\Node\Stmt\TryCatch;
+
+class ArchivoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function __construct()
-    {
-        $this->middleware('can:admin.posts.index')->only('index');
-        $this->middleware('can:admin.posts.create')->only('create', 'store');
-
-        $this->middleware('can:admin.posts.edit')->only('edit', 'update');
-        $this->middleware('can:admin.posts.destroy')->only('destroy');
-    }
     public function index(Request $request)
     {
         $search = $request->search;
 
-        $categories = Category::pluck('name', 'id');
 
-        $posts =   Post::where('name', 'LIKE', "%{$search}%")->where('category_id', '=', 1)->latest()->paginate();
-        return view('admin.posts.index', ['posts' => $posts, 'categories' => $categories]);
+
+        $archivos =   Document::where('name', 'LIKE', "%{$search}%")->latest()->paginate();
+
+        return view('admin.archivos.index', ['archivos' => $archivos]);
     }
 
     /**
@@ -44,10 +32,8 @@ class PostController extends Controller
     public function create()
     {
 
-        $tags = Tag::all();
-        $categories = Category::pluck('name', 'id');
 
-        return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
+        return view('admin.archivos.create');
     }
 
     /**
@@ -56,29 +42,29 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
 
 
-        /*         return $request->file('file');
+
+
+        $reg = new Document;
+        $reg->name = $request->get('name');
+        /*         $reg->slug = $request->get('slug');
+ */
+        if ($request->hasFile('file')) {
+
+            $url =  Storage::put('public/archivos', $request->file('file'));
+
+            $reg->document = $url;
+        }
+
+        $reg->save();
+        /*         dd($request);
+ */        /*         return $request->file('file');
         */
 
-
-        $post = Post::create($request->all());
-
-        if ($request->file('file')) {
-            $url =  Storage::put('public/posts', $request->file('file'));
-
-            $post->image()->create(['url' => $url]);
-        }
-
-
-
-
-        if ($request->tags) {
-            $post->tags()->attach($request->tags);
-        }
-        return redirect()->route('admin.posts.edit', $post)->with('info', 'se ha creado el articulo con exito');
+        return redirect()->route('admin.archivos.index')->with('info', 'se ha creado el articulo con exito');
     }
 
     /**
@@ -87,7 +73,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show()
     {
         //
 
@@ -101,12 +87,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(/* Post $post */)
     {
-        $tags = Tag::all();
+        /*     $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
         return view('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories]);
+  */
     }
 
     /**
@@ -116,7 +103,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostRequest $request, Post $post)
+    public function update(Request $request, Post $post)
     {
         $post->update($request->all());
         if ($request->file('file')) {
@@ -134,7 +121,7 @@ class PostController extends Controller
         }
         /*         $this->authorize('author', $post);
  */
-        $tags = Tag::all();
+        /*    $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
 
@@ -142,6 +129,7 @@ class PostController extends Controller
             $post->tags()->sync($request->tags);
         }
         return redirect()->route('admin.posts.edit', ['post' => $post, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
+   */
     }
 
     /**
@@ -150,16 +138,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Document $archivo)
     {
-        return $post;
+        $archivo->delete();
+        Storage::delete($archivo->document);
 
-        if ($post->image) {
-            Storage::delete($post->image->url);
-        }
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with('info', 'La articulo se ha eliminado con exito');
+        return redirect()->route('admin.archivos.index')->with('info', 'El archivo se ha eliminado con exito');
     }
-
-    /* mostrar planes */
 }

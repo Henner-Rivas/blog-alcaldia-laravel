@@ -324,14 +324,7 @@ return [
             'active' => ['admin/users*'],
             'can' =>  'admin.users.index'
         ],
-        [
-            'text' => 'categorias',
-            'url'  => 'admin/categories',
-            'active' => ['admin/categories*'],
-            'can' =>  'admin.categories.index'
 
-
-        ],
         [
             'text' => 'etiquetas',
             'url'  => 'admin/tags',
@@ -347,6 +340,30 @@ return [
             'can' =>  'admin.roles.index'
 
 
+        ],
+        [
+            'text'    => 'Documentos',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Planes',
+                    'url'  => 'admin/planes',
+                ],
+
+                [
+                    'text' => 'Programas',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Archivos',
+                    'url'  => 'admin/archivos',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Agregar articulos carrucel',
+            'url'  => 'admin/sliders',
+            'active' => ['admin/sliders*'],
         ],
 
         ['header' => 'Opciones de articulos'],
