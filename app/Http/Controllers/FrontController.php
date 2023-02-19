@@ -36,8 +36,8 @@ class FrontController extends Controller
 
         $comment = new Comment();
         $comment->description = $request->description;
-        $comment->status = 0;
-
+        /*         $comment->status = 0;
+ */
         $comment->user_id = \auth()->id();
         $comment->parent_id = $request->parent_id;
         /*         return $comment;

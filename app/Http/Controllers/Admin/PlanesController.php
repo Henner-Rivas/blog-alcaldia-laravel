@@ -73,9 +73,6 @@ class PlanesController extends Controller
             $post->image()->create(['url' => $url]);
         }
 
-
-
-
         if ($request->tags) {
             $post->tags()->attach($request->tags);
         }
