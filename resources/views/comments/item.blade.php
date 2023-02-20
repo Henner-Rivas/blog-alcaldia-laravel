@@ -22,7 +22,8 @@
     </div>
     @else
 
-    <a href="/login?redirect_to={{url()->current()}}" class="bg-my_blue">Responder</a>
+    <a href="/login?redirect_to={{url()->current()}}"
+        class="text-my_blue font-extrabold  focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center">Responder</a>
     @endauth
 
 

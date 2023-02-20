@@ -33,18 +33,22 @@ class FrontController extends Controller
     public function storeComment(Request $request, Post $post)
     {
 
+        $request->validate([
+            'description' => 'required',
+        ], [
+            'name.required' => 'Este campo es requerido',
+        ]);
+
 
         $comment = new Comment();
         $comment->description = $request->description;
-        /*         $comment->status = 0;
- */
+
         $comment->user_id = \auth()->id();
         $comment->parent_id = $request->parent_id;
-        /*         return $comment;
- */
-        $post->comments()->save($comment);
 
-        return redirect()->back();
+        $post->comments()->create($comment);
+
+        return redirect()->back()->with('info', 'comentario recibido con exito');
     }
 
 
