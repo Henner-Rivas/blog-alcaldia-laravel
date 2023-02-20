@@ -355,7 +355,7 @@ return [
                     'url'  => 'admin/programas',
                 ],
                 [
-                    'text' => 'Archivos',
+                    'text' => 'Documentos',
                     'url'  => 'admin/archivos',
                 ],
             ],

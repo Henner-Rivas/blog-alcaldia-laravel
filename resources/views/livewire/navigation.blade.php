@@ -256,7 +256,7 @@
                             </li>
                             <li>
                                 <a href={{route('pages.documents')}}
-                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">Archivos
+                                    class="block px-4 py-2 hover:bg-light_red hover:text-white rounded-md">Documentos
                                 </a>
                             </li>
                         </ul>
