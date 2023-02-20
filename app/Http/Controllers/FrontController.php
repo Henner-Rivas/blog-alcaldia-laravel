@@ -46,7 +46,7 @@ class FrontController extends Controller
         $comment->user_id = \auth()->id();
         $comment->parent_id = $request->parent_id;
 
-        $post->comments()->create($comment);
+        $post->comments()->save($comment);
 
         return redirect()->back()->with('info', 'comentario recibido con exito');
     }

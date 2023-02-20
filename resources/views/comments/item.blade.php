@@ -1,7 +1,8 @@
 <div class="w-full bg-white p-2 rounded-md">
     <div>
         <p> <span class="font-bold">{{$item->user->name}}</span> <span>dice:</span></p>
-        <p class=" ml-2 mb-1text-sm text-gray-500"> {{$post->updated_at}}</p>
+        <p class=" ml-2 mb-1text-sm text-gray-500"> {{$item->updated_at->toDateString()}} a las
+            {{$item->updated_at->toTimeString()}} </p>
         <p class="ml-2">{{$item->description}}</p>
 
     </div>
