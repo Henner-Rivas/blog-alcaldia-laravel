@@ -15,9 +15,11 @@
             <div class="flex flex-col gap-2">
                 @foreach ($archivos as $document)
 
-                <div class="bg-white p-2 ">
+                <div class="bg-white p-2 flex justify-around">
                     <a href="{{Storage::url($document->document)}}" target="_blank" class="text-my_blue">
                         {{$document->name}}</a>
+
+                    <span> {{$document->updated_at->format('d-m-Y')}}</span>
                 </div>
 
                 @endforeach
