@@ -40,13 +40,7 @@ class FrontController extends Controller
         ]);
 
 
-        $comment = new Comment();
-        $comment->description = $request->description;
-
-        $comment->user_id = \auth()->id();
-        $comment->parent_id = $request->parent_id;
-
-        $post->comments()->save($comment);
+        $post->comments()->create($request->all());
 
         return redirect()->back()->with('info', 'comentario recibido con exito');
     }

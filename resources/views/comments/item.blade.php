@@ -1,17 +1,20 @@
 <div class="w-full bg-white p-2 rounded-md">
     <div>
-        <p> <span class="font-bold">{{$item->user->name}}</span> <span>dice:</span></p>
-        <p class=" ml-2 mb-1text-sm text-gray-500"> {{$item->updated_at->toDateString()}} a las
-            {{$item->updated_at->toTimeString()}} </p>
+        <p> <span class="font-bold"> {{$item->role}}
+            </span> <span>dice:</span></p>
+        <p class=" ml-2 mb-1text-sm text-gray-500"> {{$item->updated_at->toDateString()}} </p>
         <p class="ml-2">{{$item->description}}</p>
+        <p>{{$item->user->role}}</p>
+
+
 
     </div>
+
 
     @auth()
     <button id="dropdownSearchButton" data-dropdown-toggle="#respon-{{$item->id}}" data-dropdown-placement="bottom"
         class="text-my_blue font-extrabold  focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center "
         type="button">Responder
-
     </button>
 
     <!-- Dropdown menu -->

@@ -11,7 +11,6 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
 use App\Models\Comment;
-
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable

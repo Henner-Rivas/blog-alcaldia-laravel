@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StoreSliderRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -105,7 +106,7 @@ class SliderController extends Controller
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
-        return view('admin.sliders.edit', ['post' => $slider, 'tags' => $tags, 'categories' => $categories]);
+        return view('admin.sliders.edit', ['slider' => $slider, 'tags' => $tags, 'categories' => $categories]);
     }
 
     /**
@@ -115,8 +116,12 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostRequest $request, Post $slider)
+    public function update(StoreSliderRequest $request, Post $slider)
     {
+
+
+
+
         $slider->update($request->all());
         if ($request->file('file')) {
             $url =  Storage::put('public/posts', $request->file('file'));
@@ -131,8 +136,7 @@ class SliderController extends Controller
                 ]);
             }
         }
-        /*         $this->authorize('author', $post);
- */
+
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 

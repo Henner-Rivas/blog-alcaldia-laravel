@@ -142,7 +142,7 @@ class ProgramaController extends Controller
         if ($request->tags) {
             $programa->tags()->sync($request->tags);
         }
-        return redirect()->route('admin.programas.edit', ['post' => $programa, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
+        return redirect()->route('admin.programas.edit', ['programa' => $programa, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
     }
 
     /**

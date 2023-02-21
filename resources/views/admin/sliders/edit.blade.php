@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>editar articulo</h1>
+<h1>editar carrucel</h1>
 @stop
 
 @section('content')
@@ -14,13 +14,13 @@
 
 <div class="card">
     <div class="card-body">
-        {!! Form::model($post,['route' => ['admin.sliders.update',$post],'autocomplete'=> 'off','files'=>
+        {!! Form::model($slider,['route' => ['admin.sliders.update',$slider],'autocomplete'=> 'off','files'=>
         true,'method'=> 'put',]) !!}
 
         {!! Form::hidden('user_id', auth()->user()->id) !!}
         <div class="form-group">
             {!! Form::label('name', 'Nombre') !!}
-            {!! Form::text(' name', $post->name, ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
+            {!! Form::text(' name', $slider->name, ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
             @error('name')
             <span class="text-danger">{{$message}}</span>
             @enderror
@@ -34,13 +34,8 @@
             <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class="form-group">
-            {!! Form::label('category_id', 'Categoria') !!}
-            {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
-            @error('category_id')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
-        </div>
+        {!! Form::hidden('category_id', 2) !!}
+
 
         <div class="form-group">
             <div class="font-weight-blold">Etiquetas</div>
@@ -74,9 +69,9 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="img-wrapper">
-                    @if ($post->image)
+                    @if ($slider->image)
 
-                    <img id="picture" src="{{Storage::url($post->image->url)}}" alt="{{$post->name}}">
+                    <img id="picture" src="{{Storage::url($slider->image->url)}}" alt="{{$slider->name}}">
                     @else
                     <img src="" alt="no tiene ">
                     @endif
@@ -117,7 +112,7 @@
 
 
 
-        {!! Form::submit('editar artitulo', ['class'=> 'btn btn-primary']) !!}
+        {!! Form::submit('editar carrucel', ['class'=> 'btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
 </div>

@@ -14,13 +14,13 @@
 
 <div class="card">
     <div class="card-body">
-        {!! Form::model($plane,['route' => ['admin.planes.update',$plane],'autocomplete'=> 'off','files'=>
+        {!! Form::model($programa,['route' => ['admin.programas.update',$programa],'autocomplete'=> 'off','files'=>
         true,'method'=> 'put',]) !!}
 
         {!! Form::hidden('user_id', auth()->user()->id) !!}
         <div class="form-group">
             {!! Form::label('name', 'Nombre') !!}
-            {!! Form::text(' name', $plane->name, ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
+            {!! Form::text(' name', $programa->name, ['placeholder'=> 'ingrese nombre' , 'class' => 'form-control']) !!}
             @error('name')
             <span class="text-danger">{{$message}}</span>
             @enderror
@@ -34,13 +34,8 @@
             <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class="form-group">
-            {!! Form::label('category_id', 'Categoria') !!}
-            {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
-            @error('category_id')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
-        </div>
+        {!! Form::hidden('category_id', 4) !!}
+
 
         <div class="form-group">
             <div class="font-weight-blold">Etiquetas</div>
@@ -74,9 +69,9 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="img-wrapper">
-                    @if ($plane->image)
+                    @if ($programa->image)
 
-                    <img id="picture" src="{{Storage::url($plane->image->url)}}" alt="{{$plane->name}}">
+                    <img id="picture" src="{{Storage::url($programa->image->url)}}" alt="{{$programa->name}}">
                     @else
                     <img src="" alt="no tiene ">
                     @endif

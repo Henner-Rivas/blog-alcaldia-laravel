@@ -34,13 +34,8 @@
             <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class="form-group">
-            {!! Form::label('category_id', 'Categoria') !!}
-            {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
-            @error('category_id')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
-        </div>
+        {!! Form::hidden('category_id', 3) !!}
+
 
         <div class="form-group">
             <div class="font-weight-blold">Etiquetas</div>

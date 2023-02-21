@@ -130,8 +130,7 @@ class PlanesController extends Controller
                 ]);
             }
         }
-        /*         $this->authorize('author', $post);
- */
+
         $tags = Tag::all();
         $categories = Category::pluck('name', 'id');
 
@@ -139,7 +138,7 @@ class PlanesController extends Controller
         if ($request->tags) {
             $plane->tags()->sync($request->tags);
         }
-        return redirect()->route('admin.planes.edit', ['post' => $plane, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
+        return redirect()->route('admin.planes.edit', ['plane' => $plane, 'tags' => $tags, 'categories' => $categories])->with('info', 'Se ha actualizado con exito');
     }
 
     /**

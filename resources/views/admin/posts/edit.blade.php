@@ -34,13 +34,8 @@
             <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class="form-group">
-            {!! Form::label('category_id', 'Categoria') !!}
-            {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
-            @error('category_id')
-            <span class="text-danger">{{$message}}</span>
-            @enderror
-        </div>
+        {!! Form::hidden('category_id', 1) !!}
+
 
         <div class="form-group">
             <div class="font-weight-blold">Etiquetas</div>
@@ -125,6 +120,7 @@
 
 @stop
 
+
 @push('js')
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
 
@@ -183,8 +179,6 @@
         position: relative;
 
     }
-
-
 
     .img-wrapper img {
         object-fit: cover;

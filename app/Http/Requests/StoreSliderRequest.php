@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class StoreSliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,9 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
 
-        $post = $this->route()->parameter('post');
-        $plane = $this->route()->parameter('plane');
+        /*         $post = $this->route()->parameter('post');
+ */
+        $slider = $this->route()->parameter('slider');
 
         $rules = [
             'name' => 'required',
@@ -38,10 +39,8 @@ class StorePostRequest extends FormRequest
             'file' => 'image'
 
         ];
-        if ($post) {
-            $rules['slug'] = 'required|unique:posts,slug,' . $post->id;
-        } else if ($plane) {
-            $rules['slug'] = 'required|unique:posts,slug,' . $plane->id;
+        if ($slider) {
+            $rules['slug'] = 'required|unique:posts,slug,' .  $slider->id;
         }
 
 
