@@ -15,7 +15,10 @@
             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
             placeholder="Deja tu comentario..."></textarea>
 
-        <input type="hidden" name='user_id' value="{{Auth::user()->id}}">
+
+
+
+
     </div>
 
     @auth()

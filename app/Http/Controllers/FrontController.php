@@ -38,9 +38,15 @@ class FrontController extends Controller
         ], [
             'name.required' => 'Este campo es requerido',
         ]);
+        $comentario = new Comment();
+        $comentario->description = $request->description;
+        $comentario->parent_id = $request->parent_id;
+        $comentario->role = $request->role;
 
 
-        $post->comments()->create($request->all());
+        $comentario->user_id = \Auth()->id();
+
+        $post->comments()->save($comentario);
 
         return redirect()->back()->with('info', 'comentario recibido con exito');
     }
