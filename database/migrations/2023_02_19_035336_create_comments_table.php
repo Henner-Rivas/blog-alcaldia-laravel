@@ -18,9 +18,15 @@ return new class extends Migration
             $table->text('description');
             $table->enum('status', [0, 1])->default(0);
             $table->string('role');
-            $table->foreignId('parent_id')->nullable()->references('id')->on('comments')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('post_id');
+            $table->foreign('parent_id')->nullable()->references('id')->on('comments')->onUpdate('cascade')->onDelete('cascade');
+            /*             $table->foreignId('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+ */
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+
 
             $table->timestamps();
         });

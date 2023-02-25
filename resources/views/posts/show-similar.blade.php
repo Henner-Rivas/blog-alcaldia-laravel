@@ -79,7 +79,7 @@
                     <a href="{{route('posts.show',$similar)}}" class="
                     flex gap-2">
                         <article class="w-[150px] h-[80px] bg-cover bg-center " class="w-full h-80 bg-cover bg-center"
-                            style="background-image: url(@if($similar->image){{Storage::url($similar->image->url)}}
+                            style="background-image: url(@if($similar->image) {{Storage::url($similar->image->url)}} @else 'https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?s=612x612&w=0&k=20&c=PM_optEhHBTZkuJQLlCjLz-v3zzxp-1mpNQZsdjrbns='
                             @endif)">
                         </article>
 
@@ -95,7 +95,8 @@
             </div>
 
 
-
+            {{-- {{dd($post->comments())}}
+            --}} {{-- contenido relacionado --}}
             <div class="flex flex-col w-full col-span-2 my-0 mx-auto">
                 @include('comments.show',['list'=> $post->comments,'post'=> $post])
 

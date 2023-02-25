@@ -7,7 +7,6 @@
     @endif
     <input type="hidden" name='role' value=@role('Admin') Admin @else Usuario @endrole>
 
-
     <div class=" ">
 
         <label for="message" class="block mb-2 text-xl font-medium text-gray-900 ">Deja un comentario</label>

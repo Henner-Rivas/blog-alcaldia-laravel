@@ -18,7 +18,7 @@ class FrontController extends Controller
     {
         $sliders = Post::where('status', 2)->where('category_id', '=', 2)->latest()->paginate(6);
 
-        $posts = Post::where('status', 2)->where('category_id', '=', 1)->latest()->paginate(10);
+        $posts = Post::where('status', 2)->where('category_id', '=', 1)->latest()->paginate(8);
         return view('pages.home', ['posts' => $posts, 'postsSlider' => $sliders]);
     }
     public function show_planes(Post $post)
@@ -40,8 +40,18 @@ class FrontController extends Controller
         ]);
         $comentario = new Comment();
         $comentario->description = $request->description;
-        $comentario->parent_id = $request->parent_id;
         $comentario->role = $request->role;
+        $comentario->parent_id = $request->parent_id;
+        $comentario->post_id = $request->post_id;
+        /*         dd($comentario);
+ */
+        /*         $parent_id = \Auth()->id();
+        if ($parent_id) {
+            $parent_id = \Auth()->id();
+        } else {
+            $parent_id = null;
+
+ */
 
         $user_id = \Auth()->id();
         if ($user_id) {
@@ -50,6 +60,7 @@ class FrontController extends Controller
             $user_id = 2;
         }
         $comentario->user_id = $user_id;
+
 
         $post->comments()->save($comentario);
 
@@ -88,7 +99,16 @@ class FrontController extends Controller
 
         $similares = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->take(5)->get();
         $this->authorize('published', $post);
+
         return view('posts.show', ['post' => $post, 'similares' => $similares]);
+    }
+    public function show_similar(Post $post)
+    {
+
+        $similares = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->take(5)->get();
+        $this->authorize('published', $post);
+
+        return view('posts.show-similar', ['post' => $post, 'similares' => $similares]);
     }
 
     public function search(Request $request)

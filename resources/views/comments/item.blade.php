@@ -21,7 +21,7 @@
     <div id="#respon-{{$item->id}}" class="z-10 hidden max-w-7xl bg-white rounded-lg shadow  ml-4">
 
 
-        @include('comments.form',['item'=>$item])
+        @include('comments.form',['item'=>$item,'post'=> $post])
 
     </div>
     {{-- @else

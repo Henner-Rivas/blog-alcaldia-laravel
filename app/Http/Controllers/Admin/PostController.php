@@ -62,8 +62,6 @@ class PostController extends Controller
 
         /*         return $request->file('file');
         */
-
-
         $post = Post::create($request->all());
 
         if ($request->file('file')) {
