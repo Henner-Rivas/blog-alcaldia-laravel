@@ -326,15 +326,11 @@
                 </h2>
 
                 <div class="flex flex-col gap-3">
-                    <p> <i class="fa-regular fa-square-check mr-1 text-my_blue"></i>
-                        Última Actualización: <span> 26/01/2023 8:44:06
+                    <p class="max-w-[300px] "> <i class="fa-regular fa-square-check mr-1 text-my_blue "></i>
+                        Horario atención: <span> Lunes a Viernes de 8:00 a. m. a 12:00 m. y de 2:00 p. m. a 6:00 p. m
                         </span>
                     </p>
-                    <p> <i class="fa-regular fa-square-check mr-1 text-my_blue"></i>
-                        Número de Visitas:
-                        : <span> 44546
-                        </span>
-                    </p>
+
 
                 </div>
             </div>

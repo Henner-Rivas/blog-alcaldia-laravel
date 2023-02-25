@@ -43,7 +43,7 @@
         </nav>
         <div class=" max-w-7xl">
 
-            <h1 class="text-4xl font-semibold text-opacity-20"> {{$post->id}} {{$post->name}}dd</h1>
+            <h1 class="text-4xl font-semibold text-opacity-20"> {{$post->name}}</h1>
 
             <div class="my-2 flex gap-2">
                 <p>Por admin :</p>
