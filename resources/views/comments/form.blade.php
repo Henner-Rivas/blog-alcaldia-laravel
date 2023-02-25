@@ -21,12 +21,12 @@
 
     </div>
 
-    @auth()
-    <button type="
+    {{-- @auth()
+    --}} <button type="
 submit" class="  p-2 bg-light_blue rounded-md text-white ">Enviar comentario</button>
 
-    @else
+    {{-- @else
     <a href="/login" class=" p-2 bg-light_blue rounded-md text-white">Enviar comentario</a>
-    @endauth
+    @endauth --}}
 
 </form>
