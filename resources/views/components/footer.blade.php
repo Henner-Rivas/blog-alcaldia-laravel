@@ -23,6 +23,7 @@
         }
 
         .swiper-slide {
+
             text-align: center;
             font-size: 18px;
             background: #fff;
@@ -325,11 +326,25 @@
 
                 </h2>
 
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-3 ">
                     <p class="max-w-[300px] "> <i class="fa-regular fa-square-check mr-1 text-my_blue "></i>
                         Horario atención: <span> Lunes a Viernes de 8:00 a. m. a 12:00 m. y de 2:00 p. m. a 6:00 p. m
                         </span>
                     </p>
+
+
+
+                    <p class="max-w-[350px]">
+
+
+                        <i class="fa-regular fa-square-check mr-1 text-my_blue "></i>
+
+                        <span>Numero de visitas: @livewire('counter')
+                        </span>
+
+
+                    </p>
+
 
 
                 </div>

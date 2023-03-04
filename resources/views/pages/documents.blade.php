@@ -10,8 +10,11 @@
             </div>
         </div>
         <div class="container py-8 max-w-6xl my-0 mx-auto">
-            <h1 class="text-2xl font-medium mb-5">Documentos</h1>
+            <div class="flex justify-around">
+                <h1 class="text-2xl font-medium mb-5">Documentos</h1>
+                <h2 class="text-xl font-medium"> Fecha</h2>
 
+            </div>
             <div class="flex flex-col gap-2">
                 @foreach ($archivos as $document)
 

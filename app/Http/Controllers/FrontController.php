@@ -7,15 +7,17 @@ use App\Models\Comment;
 use App\Models\Document;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Counter;
 use Faker\Provider\Lorem;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-
+use Awssat\Visits\Visits;
 
 class FrontController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
         $sliders = Post::where('status', 2)->where('category_id', '=', 2)->latest()->paginate(6);
 
         $posts = Post::where('status', 2)->where('category_id', '=', 1)->latest()->paginate(8);

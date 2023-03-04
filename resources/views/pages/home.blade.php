@@ -44,6 +44,9 @@
             <div class="py-5 w-full px-5">
                 {{$posts->links()}}
             </div>
+
+
+
         </div>
 
 
