@@ -161,7 +161,7 @@ class FrontController extends Controller
         // Verificar si el usuario ya ha sido contado
         if (!$request->cookie('visited')) {
             // Establecer la cookie con un identificador único
-            $cookie = cookie('visited', uniqid(), 400); // 300s
+            $cookie = cookie('visited', uniqid(), 60); // 300s
 
             // Actualizar el contador de visitas
             $counters = Counter::latest()->paginate(1);
