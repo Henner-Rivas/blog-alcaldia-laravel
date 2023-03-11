@@ -33,6 +33,7 @@ Route::controller(FrontController::class)->group(function () {
     Route::get('/comment/{post}', 'storeComment')->name('comments.show');
     Route::get('/programas', 'programas')->name('pages.programas');
     Route::get('/programas/{post}', 'show_programa')->name('pages.show-programa');
+    Route::get('/contador', 'counter')->name('contador');
 });
 
 

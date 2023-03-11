@@ -155,4 +155,28 @@ class FrontController extends Controller
     {
         return view('pages.documents');
     }
+
+    public function counter(Request $request)
+    {
+        // Verificar si el usuario ya ha sido contado
+        if (!$request->cookie('visited')) {
+            // Establecer la cookie con un identificador único
+            $cookie = cookie('visited', uniqid(), 400); // 300s
+
+            // Actualizar el contador de visitas
+            $counters = Counter::latest()->paginate(1);
+            $views = 0;
+            foreach ($counters as $key => $value) {
+                $views = $value;
+            }
+
+            $views = intval($views['views']) + 1;
+            $counter = new Counter();
+            $counter->views = $views;
+            $counter->save();
+            return response('Contador actualizado')->withCookie($cookie);
+
+            // Enviar la cookie con la respuesta
+        }
+    }
 }

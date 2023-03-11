@@ -62,6 +62,23 @@
             color: #0645ad
         }
     </style>
+
+
+    <script>
+        window.addEventListener('unload', function(event) {
+        document.cookie = encodeURIComponent('visited') + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+axios.get('{{ route("contador") }}')
+.then(function(response) {
+    document.cookie = encodeURIComponent('visited') + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+  console.log(response);
+
+})
+.catch(function(error) {
+  console.log(error);
+});
+});
+    </script>
 </head>
 
 <body class="font-sans antialiased">
@@ -85,8 +102,6 @@
 
     @livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 
 </body>
 

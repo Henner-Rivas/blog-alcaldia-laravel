@@ -11,8 +11,7 @@ class Counter extends Component
 {
     public function render()
     {
-        $counters = Counters::latest()->paginate(5);
-        Counters::increment('views');
+        $counters = Counters::latest()->paginate(1);
         return view('livewire.counter', compact('counters'));
     }
 }
